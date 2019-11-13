@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="Đặt vấn đềSymbol là khái niệm rất quen tai và quen tay với lập trình viên ruby, ắt hẳn ai cũng đã từng nghe không ít thì nhiều, bản thân symbol cũng xuất hiện rất thường xuyên trong rails framework. K">
+<meta name="keywords" content="ruby">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Symbol Và String Trong Ruby">
+<meta property="og:url" content="https:&#x2F;&#x2F;hdchinh.github.io&#x2F;2019&#x2F;06&#x2F;09&#x2F;2019-06-09-so-sanh-symbol-va-string-trong-ruby&#x2F;index.html">
+<meta property="og:site_name" content="Chinh&#39;s Notes">
+<meta property="og:description" content="Đặt vấn đềSymbol là khái niệm rất quen tai và quen tay với lập trình viên ruby, ắt hẳn ai cũng đã từng nghe không ít thì nhiều, bản thân symbol cũng xuất hiện rất thường xuyên trong rails framework. K">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-11-13T04:08:22.783Z">
+<meta name="twitter:card" content="summary">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>Symbol Và String Trong Ruby</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/projects/">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2019/06/09/2019-06-09-luu-y-ngan-gon-ve-scope-va-class-method/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2019/06/08/2019-06-08-tan-cong-sql-injection-va-cach-phong-chong-trong-rails/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://hdchinh.github.io/2019/06/09/2019-06-09-so-sanh-symbol-va-string-trong-ruby/" target="_blank" rel="noopener"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://hdchinh.github.io/2019/06/09/2019-06-09-so-sanh-symbol-va-string-trong-ruby/&text=Symbol Và String Trong Ruby" target="_blank" rel="noopener"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://hdchinh.github.io/2019/06/09/2019-06-09-so-sanh-symbol-va-string-trong-ruby/&title=Symbol Và String Trong Ruby" target="_blank" rel="noopener"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://hdchinh.github.io/2019/06/09/2019-06-09-so-sanh-symbol-va-string-trong-ruby/&is_video=false&description=Symbol Và String Trong Ruby" target="_blank" rel="noopener"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Symbol Và String Trong Ruby&body=Check out this article: https://hdchinh.github.io/2019/06/09/2019-06-09-so-sanh-symbol-va-string-trong-ruby/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://hdchinh.github.io/2019/06/09/2019-06-09-so-sanh-symbol-va-string-trong-ruby/&title=Symbol Và String Trong Ruby" target="_blank" rel="noopener"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://hdchinh.github.io/2019/06/09/2019-06-09-so-sanh-symbol-va-string-trong-ruby/&title=Symbol Và String Trong Ruby" target="_blank" rel="noopener"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://hdchinh.github.io/2019/06/09/2019-06-09-so-sanh-symbol-va-string-trong-ruby/&title=Symbol Và String Trong Ruby" target="_blank" rel="noopener"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://hdchinh.github.io/2019/06/09/2019-06-09-so-sanh-symbol-va-string-trong-ruby/&title=Symbol Và String Trong Ruby" target="_blank" rel="noopener"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://hdchinh.github.io/2019/06/09/2019-06-09-so-sanh-symbol-va-string-trong-ruby/&name=Symbol Và String Trong Ruby&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Dat-van-de"><span class="toc-number">1.</span> <span class="toc-text">Đặt vấn đề</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Luan-ban"><span class="toc-number">2.</span> <span class="toc-text">Luận bàn</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-Khai-bao-va-tu-tuong"><span class="toc-number">3.</span> <span class="toc-text">1. Khai báo và tư tưởng</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-Mutable-va-Immutable"><span class="toc-number">4.</span> <span class="toc-text">2. Mutable và Immutable</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-Symbol-va-String-duoc-luu-tru-nhu-nao"><span class="toc-number">5.</span> <span class="toc-text">3. Symbol và String được lưu trữ như nào.</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-Ve-toc-do-thuc-thi"><span class="toc-number">6.</span> <span class="toc-text">4. Về tốc độ thực thi</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-Diem-yeu-cua-Symbol"><span class="toc-number">7.</span> <span class="toc-text">5. Điểm yếu của Symbol</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Ket-luan"><span class="toc-number">8.</span> <span class="toc-text">Kết luận</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Symbol Và String Trong Ruby
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Chinh's Notes</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2019-06-08T17:00:00.000Z" itemprop="datePublished">2019-06-09</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/ruby-notes/">ruby notes</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/ruby/" rel="tag">ruby</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h1 id="Dat-van-de"><a href="#Dat-van-de" class="headerlink" title="Đặt vấn đề"></a>Đặt vấn đề</h1><p>Symbol là khái niệm rất quen tai và quen tay với lập trình viên ruby, ắt hẳn ai cũng đã từng nghe không ít thì nhiều, bản thân symbol cũng xuất hiện rất thường xuyên trong rails framework.</p>
+<p>Khi tôi là thực tập sinh, tôi nhận được nhiều lời khuyên về việc nên sử dụng symbol nhưng chưa từng được nghe 1 lý giải đủ rõ ràng về việc vì sao nên sử dụng nó, mà có lẽ tôi cũng không thích nó, sự xuất hiện của symbol làm cú pháp trong rails không thống nhất khi có thể viết nhiều kiểu để biểu hiện cùng một ý nghĩa. Tôi không thích việc không đồng bộ đó chút nào.</p>
+<p>Có một lý giải đơn giản và dễ nhớ để phân biệt giữa 2 đối tượng này đó là: Symbol mà giá trị giống nhau thì có cùng object_id, còn String thì dù giá trị giống nhau, mỗi chuỗi vẫn sẽ có một object_id khác nhau.<br>Liệu lý giải này đã đủ? Hãy cùng tìm hiểu.</p>
+<h1 id="Luan-ban"><a href="#Luan-ban" class="headerlink" title="Luận bàn"></a>Luận bàn</h1><h1 id="1-Khai-bao-va-tu-tuong"><a href="#1-Khai-bao-va-tu-tuong" class="headerlink" title="1. Khai báo và tư tưởng"></a>1. Khai báo và tư tưởng</h1><p>Để khai báo một symbol bạn thêm dấu <code>:</code> đằng trước.</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">:meo</span></span><br><span class="line"></span><br><span class="line"><span class="symbol">:<span class="string">"meo"</span></span></span><br></pre></td></tr></table></figure>
+
+<p>Đơn giản như trên, ta đã khai báo bằng 2 cách khác nhau. Nhưng thực tế ruby hiểu là chúng cùng là 1 symbol.</p>
+<p>Điểm cần phải nói rõ trước khi đi xuống các phần sau đó là:</p>
+<ol>
+<li><p>Symbol thực chất cũng là một String.</p>
+</li>
+<li><p>Symbol là một <a href="https://hdchinh.com/programing/2019/04/08/immutable-va-mutable-trong-ruby.html" target="_blank" rel="noopener">immutable</a>.</p>
+</li>
+</ol>
+<h1 id="2-Mutable-va-Immutable"><a href="#2-Mutable-va-Immutable" class="headerlink" title="2. Mutable và Immutable"></a>2. Mutable và Immutable</h1><p>Tôi đã từng trình bày một bài viết về chủ đề này. Các bạn có thể tham khảo tại <a href="https://hdchinh.com/programing/2019/04/08/immutable-va-mutable-trong-ruby.html" target="_blank" rel="noopener">đây</a>.</p>
+<p>Nhưng nói một cách vắn tắt thì biến X là một immutable khi mà vùng nhớ lưu giá trị của X không thể được thay đổi giá trị.</p>
+<p>Như trình bày ở mục 1, symbol là immutable (khác với string thì là mutable).</p>
+<p>Chúng ta có thể kết luận rằng, symbol thực chất là một string có tính chất bất biến giá trị (immutable).</p>
+<p>Câu hỏi đặt ra là: Tại sao tôi lại cần những biến không thể thay đổi giá trị?</p>
+<ol>
+<li><p>Trong quá trình lập trình, chúng ta cần một số biến không thể bị thay đổi giá trị trong quá trình sử dụng, để đảm bảo tính đúng đắn của chương trình. (Tôi không có ví dụ cụ thể nào).</p>
+</li>
+<li><p>Vì là mutable, nên mỗi khi một string được gọi, bất kể là các chuỗi có giống nhau hay không, ruby luôn tạo ra một vùng nhớ mới cho chúng.</p>
+</li>
+</ol>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"Chinh"</span>.object_id</span><br><span class="line"><span class="comment">#  =&gt; 70159285001700</span></span><br><span class="line"><span class="string">"Chinh"</span>.object_id</span><br><span class="line"><span class="comment"># =&gt; 70159284996100</span></span><br><span class="line"><span class="string">"Chinh"</span>.object_id</span><br><span class="line"><span class="comment"># =&gt; 70159289079920</span></span><br></pre></td></tr></table></figure>
+
+<p>Ba chuỗi cùng một nội dung, nhưng khi được gọi thì lại có 3 object_id khác nhau, chứng tỏ rằng dù cùng giá trị nhưng ruby coi chúng là 3 đối tượng khác nhau và lưu trữ mỗi vùng nhớ riêng cho từng chuỗi.</p>
+<p><strong>Vấn đề phát sinh từ đây khi mà  vùng nhớ bị lãng phí.</strong></p>
+<p>Hãy cùng thử với symbol.</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">:<span class="string">"Chinh"</span></span>.object_id</span><br><span class="line"><span class="comment"># =&gt; 1271588</span></span><br><span class="line"><span class="symbol">:<span class="string">"Chinh"</span></span>.object_id</span><br><span class="line"><span class="comment"># =&gt; 1271588</span></span><br><span class="line"><span class="symbol">:<span class="string">"Chinh"</span></span>.object_id</span><br><span class="line"><span class="comment"># =&gt; 1271588</span></span><br></pre></td></tr></table></figure>
+
+<p>Thật tuyệt, vậy là bằng một cách nào đó, khi sử dụng symbol, ruby biết được symbol này đã tồn tại hay chưa, nếu tồn tại rồi thì khi được gọi chúng sẽ dùng lại đối tượng đã có chứ không tạo thêm vùng nhớ mới.</p>
+<h1 id="3-Symbol-va-String-duoc-luu-tru-nhu-nao"><a href="#3-Symbol-va-String-duoc-luu-tru-nhu-nao" class="headerlink" title="3. Symbol và String được lưu trữ như nào."></a>3. Symbol và String được lưu trữ như nào.</h1><p>Một tiêu đề có vẻ buồn cười, vì cái đối tượng trong ruby tất nhiên được lưu ở bộ nhớ trong với phân vùng gọi là heap.</p>
+<p>Hiển nhiên String không ngoại lệ.</p>
+<p>Nếu String được lưu trữ một cách bình thường và không thể kiểm soát xem nó lưu những gì (vì nó là mutable). Nên khi tạo ra một đối tượng String mới, Ruby sẽ tìm một vùng nhớ trống và lưu nó tại đó và không quan tâm xem là có bao nhiêu String đang hoạt động trong chương trình có nội dung giống nhau.</p>
+<p>Vậy Symbol thì sao? Như đã trình bày ở mục trên thì bằng cách nào đó mà ruby có thể biết được symbol đã tồn tại hay chưa, nếu tồn tại thì xài lại còn chưa thì mới tạo ra vùng nhớ mới. Vậy chúng làm vậy bằng cách nào?</p>
+<p>Thực ra không hề có phép màu nào ở đây cả, muốn truy vết symbol như nói ở trên thì chúng buộc phải được lưu trữ và quản lý dưới 1 dạng cơ sở dữ liệu nào đó.</p>
+<p>Sự thật là Symbol được lưu trữ thành một table (thôi cứ tạm gọi là vậy), trong suốt quá trình vận hành một chương trình. Cứ tưởng tượng như việc bạn có 1 bảng trong excel, và khi có một dữ liệu mới được yêu cầu, bạn sẽ tra trong bảng excel này trước coi có chưa, nếu có rồi thì lấy ra xài lại. Còn nếu không có? thì sẽ làm 2 việc:</p>
+<ol>
+<li>Tạo dữ liệu đó.</li>
+<li>Lưu lại trong bảng để lần sau tra cứu.</li>
+</ol>
+<p>Để lấy giá trị trong table lưu symbol nói trên ta có thể dụng lệnh:</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">puts Symbol.all_symbols</span><br><span class="line"><span class="comment"># hoặc lấy tổng số symbol đã được lưu trữ trong chương trình.</span></span><br><span class="line">puts Symbol.all_symbols.size</span><br></pre></td></tr></table></figure>
+
+<h1 id="4-Ve-toc-do-thuc-thi"><a href="#4-Ve-toc-do-thuc-thi" class="headerlink" title="4. Về tốc độ thực thi"></a>4. Về tốc độ thực thi</h1><p>Qua những gì để phân tích. Ta rút ra một kết luận là Symbol thì tiết kiệm vùng nhớ một cách đáng kể so với String (xem lại cơ chế lưu vào table bên trên).</p>
+<p>Nhưng vậy ngoài ra thì chúng còn gì khác biệt nữa không? Về performance thì sao?</p>
+<p>Câu trả lời là Symbol vẫn nổi trội hơn String ở tốc độ thực thi:</p>
+<ul>
+<li>Trong trường hợp tạo một đối tượng mới: Symbol có thể sử dụng lại, còn String thì luôn luôn tạo mới. Ủa vậy thì tạo mới String phải nhanh hơn chứ ta. Vì nó không cần quét lại bảng table symbols mà luôn luôn tạo đối tượng mới, trong khi đó thì Symbol phải quét lại trước rồi nếu không có mới tạo đối tượng.</li>
+</ul>
+<p>Nhưng mọi thứ không đơn giản như vậy, Trong ruby có một module gọi tắt là GC có chức năng thu gòm “rác”, rác ở đây là các string được khai báo nhưng không còn sử dụng, GC sẽ thu hồi vùng nhớ của chúng để lấy không gian cho các đối tượng khác. Đây là một công việc vất vả.</p>
+<p>Flow đơn giản của nó sẽ là:  GC quét các đối tượng =&gt; Đánh dấu các đối tượng không được sử dụng =&gt; Khi chương trình trong thời gian rảnh rỗi thì GC sẽ thu gồm vùng nhớ của các đối tượng bị đánh dấu. Sẽ tốt không ít thời gian cho công đoạn này.</p>
+<p>Vì vậy về mặt performance khi tạo đối tượng mới, Symbol vẫn giành chiến thắng.</p>
+<ul>
+<li>Trong trường hợp so sánh 2 đối tượng: Chiến thắng một lần nữa thuộc về Symbol.</li>
+</ul>
+<p>Lý do thì lần này khá đơn giản: Khi cần so sánh 2 symbol, ruby sẽ vào symbols table và so sánh là xong. Trong khi người anh em String thì không thể và để so sánh 2 chuỗi, ruby sẽ phải so sánh từng ký tự trong chuỗi này với từng ký tự trong chuỗi kia. Đây lại là một công việc vất vả.</p>
+<p>Và thế là ta đã hiểu performance, Symbol win ez.</p>
+<p>Để thử nghiệm bạn có thể sử dụng thư viện benchmark để kiểm nghiệm kết luận.</p>
+<h1 id="5-Diem-yeu-cua-Symbol"><a href="#5-Diem-yeu-cua-Symbol" class="headerlink" title="5. Điểm yếu của Symbol"></a>5. Điểm yếu của Symbol</h1><p>Nếu Symbol toàn năng, toàn thiện thì đã không có lý do gì nó không thay thế luôn String. Bản chất của điểm yếu của Symbol cũng chính là điểm mạnh của nó.</p>
+<p>Đó chính là tính chất immutable.</p>
+<p>Vì không phải khi nào cũng cần một đối tượng immutable, tôi có một input là tên người dùng nhập vào. Tôi muốn chắc chắn là sẽ lưu tên người dùng dưới dạng chữ hoa trong csdl. Vì vậy tôi chạy method <code>upcase!</code>.</p>
+<p>Tuy nhiên, Symbol là immutable mà phương thức <code>upcase!</code> lại có mục tiêu thay đổi giá trị của đối tượng và thế là chương trình bắn ra một error về việc bạn đang cố thay đổi giá trị của symbol.</p>
+<p>Trong trường hợp này rõ ràng sử dụng String là điều hiển nhiên.</p>
+<h1 id="Ket-luan"><a href="#Ket-luan" class="headerlink" title="Kết luận"></a>Kết luận</h1><p>Nếu có nhận xét hoặc phản hồi hãy để lại phản hồi bên dưới nhé.</p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/projects/">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Dat-van-de"><span class="toc-number">1.</span> <span class="toc-text">Đặt vấn đề</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Luan-ban"><span class="toc-number">2.</span> <span class="toc-text">Luận bàn</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-Khai-bao-va-tu-tuong"><span class="toc-number">3.</span> <span class="toc-text">1. Khai báo và tư tưởng</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-Mutable-va-Immutable"><span class="toc-number">4.</span> <span class="toc-text">2. Mutable và Immutable</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-Symbol-va-String-duoc-luu-tru-nhu-nao"><span class="toc-number">5.</span> <span class="toc-text">3. Symbol và String được lưu trữ như nào.</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-Ve-toc-do-thuc-thi"><span class="toc-number">6.</span> <span class="toc-text">4. Về tốc độ thực thi</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-Diem-yeu-cua-Symbol"><span class="toc-number">7.</span> <span class="toc-text">5. Điểm yếu của Symbol</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Ket-luan"><span class="toc-number">8.</span> <span class="toc-text">Kết luận</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://hdchinh.github.io/2019/06/09/2019-06-09-so-sanh-symbol-va-string-trong-ruby/" target="_blank" rel="noopener"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://hdchinh.github.io/2019/06/09/2019-06-09-so-sanh-symbol-va-string-trong-ruby/&text=Symbol Và String Trong Ruby" target="_blank" rel="noopener"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://hdchinh.github.io/2019/06/09/2019-06-09-so-sanh-symbol-va-string-trong-ruby/&title=Symbol Và String Trong Ruby" target="_blank" rel="noopener"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://hdchinh.github.io/2019/06/09/2019-06-09-so-sanh-symbol-va-string-trong-ruby/&is_video=false&description=Symbol Và String Trong Ruby" target="_blank" rel="noopener"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Symbol Và String Trong Ruby&body=Check out this article: https://hdchinh.github.io/2019/06/09/2019-06-09-so-sanh-symbol-va-string-trong-ruby/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://hdchinh.github.io/2019/06/09/2019-06-09-so-sanh-symbol-va-string-trong-ruby/&title=Symbol Và String Trong Ruby" target="_blank" rel="noopener"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://hdchinh.github.io/2019/06/09/2019-06-09-so-sanh-symbol-va-string-trong-ruby/&title=Symbol Và String Trong Ruby" target="_blank" rel="noopener"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://hdchinh.github.io/2019/06/09/2019-06-09-so-sanh-symbol-va-string-trong-ruby/&title=Symbol Và String Trong Ruby" target="_blank" rel="noopener"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://hdchinh.github.io/2019/06/09/2019-06-09-so-sanh-symbol-va-string-trong-ruby/&title=Symbol Và String Trong Ruby" target="_blank" rel="noopener"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://hdchinh.github.io/2019/06/09/2019-06-09-so-sanh-symbol-va-string-trong-ruby/&name=Symbol Và String Trong Ruby&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2019 Duy Chinh
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/projects/">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+    <!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<!-- clipboard -->
+
+  <script src="/lib/clipboard/clipboard.min.js"></script>
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight .code pre").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      target: function(trigger) {
+        return trigger.nextElementSibling;
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>

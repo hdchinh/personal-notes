@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="Đặt vấn đềĐi luôn vào chủ đề, khi mới bắt đầu với môn mạng máy tính ở trường đại học, sự mập mờ khi còn ngồi trên ghế nhà trường khiến chúng ta đôi khi đã nhầm lẫn về http và https, nhớ ngày đó tôi đã">
+<meta name="keywords" content="secure,https">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Tìm Hiểu Về Chữ S Trong Https">
+<meta property="og:url" content="https:&#x2F;&#x2F;hdchinh.github.io&#x2F;2019&#x2F;05&#x2F;04&#x2F;2019-05-04-https-vai-dieu-can-nho&#x2F;index.html">
+<meta property="og:site_name" content="Chinh&#39;s Notes">
+<meta property="og:description" content="Đặt vấn đềĐi luôn vào chủ đề, khi mới bắt đầu với môn mạng máy tính ở trường đại học, sự mập mờ khi còn ngồi trên ghế nhà trường khiến chúng ta đôi khi đã nhầm lẫn về http và https, nhớ ngày đó tôi đã">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https:&#x2F;&#x2F;hdchinh.github.io&#x2F;images&#x2F;7.gif">
+<meta property="og:updated_time" content="2019-11-13T04:05:00.901Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;hdchinh.github.io&#x2F;images&#x2F;7.gif">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>Tìm Hiểu Về Chữ S Trong Https</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/projects/">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2019/05/08/2019-05-08-phan-biet-update-update-column-va-update-attribute-trong-rails/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2019/04/17/2019-05-16-autoloading-va-reloading-constants-trong-rails/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://hdchinh.github.io/2019/05/04/2019-05-04-https-vai-dieu-can-nho/" target="_blank" rel="noopener"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://hdchinh.github.io/2019/05/04/2019-05-04-https-vai-dieu-can-nho/&text=Tìm Hiểu Về Chữ S Trong Https" target="_blank" rel="noopener"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://hdchinh.github.io/2019/05/04/2019-05-04-https-vai-dieu-can-nho/&title=Tìm Hiểu Về Chữ S Trong Https" target="_blank" rel="noopener"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://hdchinh.github.io/2019/05/04/2019-05-04-https-vai-dieu-can-nho/&is_video=false&description=Tìm Hiểu Về Chữ S Trong Https" target="_blank" rel="noopener"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Tìm Hiểu Về Chữ S Trong Https&body=Check out this article: https://hdchinh.github.io/2019/05/04/2019-05-04-https-vai-dieu-can-nho/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://hdchinh.github.io/2019/05/04/2019-05-04-https-vai-dieu-can-nho/&title=Tìm Hiểu Về Chữ S Trong Https" target="_blank" rel="noopener"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://hdchinh.github.io/2019/05/04/2019-05-04-https-vai-dieu-can-nho/&title=Tìm Hiểu Về Chữ S Trong Https" target="_blank" rel="noopener"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://hdchinh.github.io/2019/05/04/2019-05-04-https-vai-dieu-can-nho/&title=Tìm Hiểu Về Chữ S Trong Https" target="_blank" rel="noopener"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://hdchinh.github.io/2019/05/04/2019-05-04-https-vai-dieu-can-nho/&title=Tìm Hiểu Về Chữ S Trong Https" target="_blank" rel="noopener"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://hdchinh.github.io/2019/05/04/2019-05-04-https-vai-dieu-can-nho/&name=Tìm Hiểu Về Chữ S Trong Https&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Dat-van-de"><span class="toc-number">1.</span> <span class="toc-text">Đặt vấn đề</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Luan-ban"><span class="toc-number">2.</span> <span class="toc-text">Luận bàn</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-Http-hieu-don-gian-thi-hoat-dong-the-nao"><span class="toc-number">3.</span> <span class="toc-text">1. Http hiểu đơn giản thì hoạt động thế nào?</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-Https-khac-phuc-van-de-cua-http-nhu-the-nao"><span class="toc-number">4.</span> <span class="toc-text">2. Https khắc phục vấn đề của http như thế nào?</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-Https-va-van-de-ma-hoa-du-lieu"><span class="toc-number">5.</span> <span class="toc-text">3. Https và vấn đề mã hoá dữ liệu</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Ket-luan"><span class="toc-number">6.</span> <span class="toc-text">Kết luận</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Tìm Hiểu Về Chữ S Trong Https
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Chinh's Notes</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2019-05-03T17:00:00.000Z" itemprop="datePublished">2019-05-04</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/rails-notes/">rails notes</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/https/" rel="tag">https</a>, <a class="tag-link" href="/tags/secure/" rel="tag">secure</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h1 id="Dat-van-de"><a href="#Dat-van-de" class="headerlink" title="Đặt vấn đề"></a>Đặt vấn đề</h1><p>Đi luôn vào chủ đề, khi mới bắt đầu với môn mạng máy tính ở trường đại học, sự mập mờ khi còn ngồi trên ghế nhà trường khiến chúng ta đôi khi đã nhầm lẫn về <code>http</code> và <code>https</code>, nhớ ngày đó tôi đã từng nghĩ chúng là 2 giao thức khác nhau, à mà ngày đó tôi có hiểu giao thức là gì không nhỉ :fearful: thôi dẹp qua một bên, bản chất của <code>https</code> cũng là giao thức <code>http</code> nhưng thêm được chữ <code>s</code> ứng với <code>secure</code>. Nghe thôi đã thấy bảo mật rồi, <code>https</code> ra đời nhằm mục đích làm cho giao thức <code>http</code> trở nên an toàn hơn, vậy nó làm cho <code>http</code> trở nên an toàn hơn như thế nào?</p>
+<h1 id="Luan-ban"><a href="#Luan-ban" class="headerlink" title="Luận bàn"></a>Luận bàn</h1><h1 id="1-Http-hieu-don-gian-thi-hoat-dong-the-nao"><a href="#1-Http-hieu-don-gian-thi-hoat-dong-the-nao" class="headerlink" title="1. Http hiểu đơn giản thì hoạt động thế nào?"></a>1. Http hiểu đơn giản thì hoạt động thế nào?</h1><p>Mục đích cuối cùng của mớ hỗn độn rối rắm này cũng là truyền nhận thông tin, tôi có một website tôi muốn gửi nó lên mạng internet để bạn, một ai đó mà tôi không quen có thể vô tình lướt qua đọc được.<br>Http là một giao thức, hiểu đơn giản là một bộ quy tắc để chung để người sử dụng dùng trình duyệt có thể truy cập tới 1 trang web, và trang web đó hiểu được yêu cầu đó rồi trả về nội dung mà trình duyệt có thể hiểu được, ví như có nhiều ngôn ngữ trên thế giới, vậy giữa 2 người có 2 tiếng nói khác nhau để giao tiếp được họ phải cùng nhau sử dụng một bộ ngôn ngữ chung mà cả hai cùng hiểu được.</p>
+<p>Một đặc điểm cơ bản của <code>http</code> là nó truyền nhận thông tin dưới dạng <strong>text</strong> thông thường, không hề mã hoã, điều này dẫn tới vấn đề đó là thông tin được truyền nhận nhanh chóng, nhẹ nhàng, nội dung rất thân thiện với người dùng (vì nó là text mà).</p>
+<p>Mọi thứ có vẻ good? không hẳn như vậy, việc dữ liệu truyền gửi được lưu dưới dạng text khiến nó quá thân thiện với người dùng, mà người dùng thì không phải ai cũng tốt :smirk: . Có những người dùng mà mục đích họ tới với website của bạn là để phá hoại, họ sẽ dễ dàng tấn công bằng cách nào đó lấy được request của bạn rồi đọc được nội dung trong request đó 1 cách dễ dàng.</p>
+<p>Bài học: Không phải lúc nào cũng nên quá thân thiện với người dùng cuối :worried:</p>
+<h1 id="2-Https-khac-phuc-van-de-cua-http-nhu-the-nao"><a href="#2-Https-khac-phuc-van-de-cua-http-nhu-the-nao" class="headerlink" title="2. Https khắc phục vấn đề của http như thế nào?"></a>2. Https khắc phục vấn đề của http như thế nào?</h1><p>Chúng ta đã nắm được khái quát vấn đề bảo mật gặp phải khi sử dụng <code>http</code>. Với những website giải trí thuần tuý với nội dung chủ yếu là hình ảnh, âm thanh và không có thông tin cần bảo mật thì sử dụng https hình như cũng chỉ để tốt cho SEO, ngoài ra cũng không còn giá trị gì. Nhưng nếu bạn sử dụng <strong>Internet Banking</strong> với http, rồi bạn đăng nhập với tài khoản ngân hàng của mình trên đó, mọi thông tin bạn gửi đi đều dưới dạng những gói tin có nội dung plain/text trần trụi, vậy điều gì bảo vệ được tài khoản của bạn nếu request kể trên bị những kẻ xấu dùng những thủ thuật hay phần mềm chuyên dụng để bắt được?</p>
+<p>Https giải bài toán trên bằng cách rất đơn giản, nội dung dạng plain/text giúp kẻ gian có thể bắt và đọc dễ dàng, vậy chúng ta hãy mã hoá nội dung để kẻ gian đó không thể hiểu được, và có bắt được gói tin cũng vô dụng?.</p>
+<h1 id="3-Https-va-van-de-ma-hoa-du-lieu"><a href="#3-Https-va-van-de-ma-hoa-du-lieu" class="headerlink" title="3. Https và vấn đề mã hoá dữ liệu"></a>3. Https và vấn đề mã hoá dữ liệu</h1><p>Trước tiên phải làm rõ là:</p>
+<p><strong><code>https = http + ssl</code></strong></p>
+<p>Trong đó:</p>
+<ol>
+<li><p>http là giao thức tryền tải.</p>
+</li>
+<li><p>ssl là cơ chế bảo mật thông tin.</p>
+</li>
+</ol>
+<p><img src="/images/7.gif" alt="tam the tu tin"></p>
+<p>Flow tối thiểu của <code>https</code> sẽ như sau:</p>
+<ol>
+<li><p><code>Client hello</code>, người dùng sử dụng trình duyệt sẽ request tới google.com.</p>
+</li>
+<li><p><code>Server hello</code>, request ở bước một đã tới nơi, server sẽ gửi trả client 2 thông tin quan trọng đó là <strong>ssl certificate</strong> (Để chứng minh “Ê, tao là google.com thật nha, not fake”) và 1 <strong>Public key</strong> (Gọi là Public-key-1. <em>Vậy ta có thể hiểu là ở Server google.com nó đang giữ Private key 1 ứng với Public key 1 kia</em>).</p>
+</li>
+<li><p>Browser sẽ xác minh <strong>ssl certificate</strong> nhận được để xem nó có phải là hàng real hay không. Vậy còn làm sao mà browser có thể phân định thật giả? Chúng ta sẽ tìm hiểu trong 1 bài viết khác.</p>
+</li>
+<li><p>Sau khi browser xác minh và đã tin tưởng máy chủ google.com, browser sẽ tạo 1 cặp khoá bảo mật RSA thứ 2, ta gọi là <strong>Public key 2 và Private key 2</strong>.</p>
+</li>
+<li><p>Browser dùng <strong>Public key 1</strong> đã nhận được từ bước 3, để mã hoá <em>Public key 2 và Private key 2</em> sinh ra trong bước 4, rồi gửi cặp khoá này dưới dạng đã mã hoá tới máy chủ google.com.</p>
+</li>
+<li><p>Như bạn nhớ, thì máy chủ google.com đang giữ <strong>Private key 1</strong> và thế là nó có thể giải mã và lấy được cặp key ở bước 5.</p>
+</li>
+<li><p>Vậy là cả máy chủ google.com và client đều có cặp khoá RSA thứ 2, mọi thông tin truyền gửi từ cả 2 phía bây giờ đều được mã hoá bằng Public key 2.</p>
+</li>
+</ol>
+<p>Note: Nhờ cơ chế mã hoá RSA (Chỉ có thể mã hoá bằng public key và giải mã nội dung bằng private key) kể trên. Server và client đã có thể liên lạc với nhau một cách an toàn. Trong quá trình trên, kể cả kẻ thủ ác có bắt được gói tin ở bước 2, bên trong có public key 1, thì cũng không phải vấn đề, bởi vì với public key đó thì hắn không thể đọc được thông tin mà client gửi ở bước 5.</p>
+<h1 id="Ket-luan"><a href="#Ket-luan" class="headerlink" title="Kết luận"></a>Kết luận</h1><p>Không có kết luận :)</p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/projects/">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Dat-van-de"><span class="toc-number">1.</span> <span class="toc-text">Đặt vấn đề</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Luan-ban"><span class="toc-number">2.</span> <span class="toc-text">Luận bàn</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-Http-hieu-don-gian-thi-hoat-dong-the-nao"><span class="toc-number">3.</span> <span class="toc-text">1. Http hiểu đơn giản thì hoạt động thế nào?</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-Https-khac-phuc-van-de-cua-http-nhu-the-nao"><span class="toc-number">4.</span> <span class="toc-text">2. Https khắc phục vấn đề của http như thế nào?</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-Https-va-van-de-ma-hoa-du-lieu"><span class="toc-number">5.</span> <span class="toc-text">3. Https và vấn đề mã hoá dữ liệu</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Ket-luan"><span class="toc-number">6.</span> <span class="toc-text">Kết luận</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://hdchinh.github.io/2019/05/04/2019-05-04-https-vai-dieu-can-nho/" target="_blank" rel="noopener"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://hdchinh.github.io/2019/05/04/2019-05-04-https-vai-dieu-can-nho/&text=Tìm Hiểu Về Chữ S Trong Https" target="_blank" rel="noopener"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://hdchinh.github.io/2019/05/04/2019-05-04-https-vai-dieu-can-nho/&title=Tìm Hiểu Về Chữ S Trong Https" target="_blank" rel="noopener"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://hdchinh.github.io/2019/05/04/2019-05-04-https-vai-dieu-can-nho/&is_video=false&description=Tìm Hiểu Về Chữ S Trong Https" target="_blank" rel="noopener"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Tìm Hiểu Về Chữ S Trong Https&body=Check out this article: https://hdchinh.github.io/2019/05/04/2019-05-04-https-vai-dieu-can-nho/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://hdchinh.github.io/2019/05/04/2019-05-04-https-vai-dieu-can-nho/&title=Tìm Hiểu Về Chữ S Trong Https" target="_blank" rel="noopener"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://hdchinh.github.io/2019/05/04/2019-05-04-https-vai-dieu-can-nho/&title=Tìm Hiểu Về Chữ S Trong Https" target="_blank" rel="noopener"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://hdchinh.github.io/2019/05/04/2019-05-04-https-vai-dieu-can-nho/&title=Tìm Hiểu Về Chữ S Trong Https" target="_blank" rel="noopener"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://hdchinh.github.io/2019/05/04/2019-05-04-https-vai-dieu-can-nho/&title=Tìm Hiểu Về Chữ S Trong Https" target="_blank" rel="noopener"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://hdchinh.github.io/2019/05/04/2019-05-04-https-vai-dieu-can-nho/&name=Tìm Hiểu Về Chữ S Trong Https&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2019 Duy Chinh
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/projects/">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+    <!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<!-- clipboard -->
+
+  <script src="/lib/clipboard/clipboard.min.js"></script>
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight .code pre").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      target: function(trigger) {
+        return trigger.nextElementSibling;
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>

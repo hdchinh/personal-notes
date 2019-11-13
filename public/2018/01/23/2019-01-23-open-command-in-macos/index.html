@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="Đặt vấn đềChắc hẳn không chỉ tôi mà nhiều người dùng MacOS khác đã quen thuộc với câu lệnh open trên terminal.Hiểu một cách cơ bản nhất câu lệnh này giúp chúng ta mở thư mục hiện tại trong cửa sổ Find">
+<meta name="keywords" content="unix">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Lệnh Open Trên Unix?">
+<meta property="og:url" content="https:&#x2F;&#x2F;hdchinh.github.io&#x2F;2018&#x2F;01&#x2F;23&#x2F;2019-01-23-open-command-in-macos&#x2F;index.html">
+<meta property="og:site_name" content="Chinh&#39;s Notes">
+<meta property="og:description" content="Đặt vấn đềChắc hẳn không chỉ tôi mà nhiều người dùng MacOS khác đã quen thuộc với câu lệnh open trên terminal.Hiểu một cách cơ bản nhất câu lệnh này giúp chúng ta mở thư mục hiện tại trong cửa sổ Find">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-11-13T03:56:42.742Z">
+<meta name="twitter:card" content="summary">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>Lệnh Open Trên Unix?</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/projects/">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2018/06/28/2019-01-28-count-vs-length-size-in-ruby-and-ror/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2018/01/01/2018-01-01-file-permission-in-linux/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://hdchinh.github.io/2018/01/23/2019-01-23-open-command-in-macos/" target="_blank" rel="noopener"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://hdchinh.github.io/2018/01/23/2019-01-23-open-command-in-macos/&text=Lệnh Open Trên Unix?" target="_blank" rel="noopener"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://hdchinh.github.io/2018/01/23/2019-01-23-open-command-in-macos/&title=Lệnh Open Trên Unix?" target="_blank" rel="noopener"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://hdchinh.github.io/2018/01/23/2019-01-23-open-command-in-macos/&is_video=false&description=Lệnh Open Trên Unix?" target="_blank" rel="noopener"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Lệnh Open Trên Unix?&body=Check out this article: https://hdchinh.github.io/2018/01/23/2019-01-23-open-command-in-macos/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://hdchinh.github.io/2018/01/23/2019-01-23-open-command-in-macos/&title=Lệnh Open Trên Unix?" target="_blank" rel="noopener"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://hdchinh.github.io/2018/01/23/2019-01-23-open-command-in-macos/&title=Lệnh Open Trên Unix?" target="_blank" rel="noopener"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://hdchinh.github.io/2018/01/23/2019-01-23-open-command-in-macos/&title=Lệnh Open Trên Unix?" target="_blank" rel="noopener"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://hdchinh.github.io/2018/01/23/2019-01-23-open-command-in-macos/&title=Lệnh Open Trên Unix?" target="_blank" rel="noopener"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://hdchinh.github.io/2018/01/23/2019-01-23-open-command-in-macos/&name=Lệnh Open Trên Unix?&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Dat-van-de"><span class="toc-number">1.</span> <span class="toc-text">Đặt vấn đề</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Luan-ban"><span class="toc-number">2.</span> <span class="toc-text">Luận bàn</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-Folders"><span class="toc-number">3.</span> <span class="toc-text">1.Folders</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-File"><span class="toc-number">4.</span> <span class="toc-text">2.File</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-Applications"><span class="toc-number">5.</span> <span class="toc-text">3.Applications</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-URLs"><span class="toc-number">6.</span> <span class="toc-text">4.URLs</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Ket-luan"><span class="toc-number">7.</span> <span class="toc-text">Kết luận</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Lệnh Open Trên Unix?
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Chinh's Notes</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2018-01-22T17:00:00.000Z" itemprop="datePublished">2018-01-23</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/he-dieu-hanh/">hệ điều hành</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/unix/" rel="tag">unix</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h1 id="Dat-van-de"><a href="#Dat-van-de" class="headerlink" title="Đặt vấn đề"></a>Đặt vấn đề</h1><p>Chắc hẳn không chỉ tôi mà nhiều người dùng MacOS khác đã quen thuộc với câu lệnh <code>open</code> trên terminal.<br>Hiểu một cách cơ bản nhất câu lệnh này giúp chúng ta mở thư mục hiện tại trong cửa sổ Finder. Tuy nhiên, câu lệnh này còn có thể làm được nhiều điều hơn chúng ta tưởng.</p>
+<h1 id="Luan-ban"><a href="#Luan-ban" class="headerlink" title="Luận bàn"></a>Luận bàn</h1><h1 id="1-Folders"><a href="#1-Folders" class="headerlink" title="1.Folders"></a>1.Folders</h1><p>Ngoài việc có thể mở được thư mục bạn đang làm việc, nó có thể mở được các thư mục khác trong máy tính của bạn chỉ bằng việc bạn cung cấp đường dẫn phía sau câu lệnh open thay vì dấu chấm như chúng ta đã làm ở trên. Bạn cũng có thể mở các thư mục ẩn hay mở nhiều thư mục cùng một lúc.<br>Dưới đây là một vài ví dụ cho những gì chúng ta đã thảo luận ở trên:</p>
+<p><code>open ~/</code></p>
+<p><code>open ~/etc ~/desktop ~/documents</code></p>
+<h1 id="2-File"><a href="#2-File" class="headerlink" title="2.File"></a>2.File</h1><p>Open cũng có thể mở tập tin, lại tiếp tục suy nghĩ đơn giản, chúng ta có thể thấy câu lệnh này giống như một cú click chuột double vào file hay folder thì đều có chức năng mở nó lên. Ví dụ:</p>
+<p><code>open ~/desktop/meo.rb</code></p>
+<p>Nó sẽ mở file meo.rb. Bạn cũng có thể sử dụng điều này với nhiều tệp.</p>
+<p><code>open ~/desktop/meo.rb ~/desktop/meo.jpg</code></p>
+<h1 id="3-Applications"><a href="#3-Applications" class="headerlink" title="3.Applications"></a>3.Applications</h1><p>Giả sử tôi có file meo.rb, bây giờ file đó sẽ được mở mặc định bởi phần mềm Xcode trong máy của tôi. Khi đó, tôi có thể override lại phần mềm mặc định để mở file này bằng câu lệnh sau:</p>
+<p><code>open -a Sublime ~/desktop/meo.rb</code></p>
+<h1 id="4-URLs"><a href="#4-URLs" class="headerlink" title="4.URLs"></a>4.URLs</h1><p>Open cũng có thể mở các đường dẫn URL với cú pháp đơn giản như sau:</p>
+<p><code>open https://google.com.vn</code></p>
+<p>Với câu lệnh này thì đường dẫn bạn cung cấp sẽ được mở bằng trình duyệt mặc định. Bạn cũng có thể sử dụng trình duyệt khác làm trình duyệt mặc định bằng tuỳ chọn –a như sau:</p>
+<p><code>open -a Firefox https://google.com.vn</code></p>
+<h1 id="Ket-luan"><a href="#Ket-luan" class="headerlink" title="Kết luận"></a>Kết luận</h1><p>Bài viết này có giá trị nào không?</p>
+<p>Câu trả lời là có, biết thêm về các lệnh Termial sẽ khiến cuộc đời developer của bạn bớt khổ.</p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/projects/">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Dat-van-de"><span class="toc-number">1.</span> <span class="toc-text">Đặt vấn đề</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Luan-ban"><span class="toc-number">2.</span> <span class="toc-text">Luận bàn</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-Folders"><span class="toc-number">3.</span> <span class="toc-text">1.Folders</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-File"><span class="toc-number">4.</span> <span class="toc-text">2.File</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-Applications"><span class="toc-number">5.</span> <span class="toc-text">3.Applications</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-URLs"><span class="toc-number">6.</span> <span class="toc-text">4.URLs</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Ket-luan"><span class="toc-number">7.</span> <span class="toc-text">Kết luận</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://hdchinh.github.io/2018/01/23/2019-01-23-open-command-in-macos/" target="_blank" rel="noopener"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://hdchinh.github.io/2018/01/23/2019-01-23-open-command-in-macos/&text=Lệnh Open Trên Unix?" target="_blank" rel="noopener"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://hdchinh.github.io/2018/01/23/2019-01-23-open-command-in-macos/&title=Lệnh Open Trên Unix?" target="_blank" rel="noopener"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://hdchinh.github.io/2018/01/23/2019-01-23-open-command-in-macos/&is_video=false&description=Lệnh Open Trên Unix?" target="_blank" rel="noopener"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Lệnh Open Trên Unix?&body=Check out this article: https://hdchinh.github.io/2018/01/23/2019-01-23-open-command-in-macos/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://hdchinh.github.io/2018/01/23/2019-01-23-open-command-in-macos/&title=Lệnh Open Trên Unix?" target="_blank" rel="noopener"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://hdchinh.github.io/2018/01/23/2019-01-23-open-command-in-macos/&title=Lệnh Open Trên Unix?" target="_blank" rel="noopener"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://hdchinh.github.io/2018/01/23/2019-01-23-open-command-in-macos/&title=Lệnh Open Trên Unix?" target="_blank" rel="noopener"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://hdchinh.github.io/2018/01/23/2019-01-23-open-command-in-macos/&title=Lệnh Open Trên Unix?" target="_blank" rel="noopener"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://hdchinh.github.io/2018/01/23/2019-01-23-open-command-in-macos/&name=Lệnh Open Trên Unix?&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2019 Duy Chinh
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/projects/">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+    <!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<!-- clipboard -->
+
+  <script src="/lib/clipboard/clipboard.min.js"></script>
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight .code pre").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      target: function(trigger) {
+        return trigger.nextElementSibling;
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>
