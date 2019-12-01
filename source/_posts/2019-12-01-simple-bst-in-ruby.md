@@ -1,7 +1,7 @@
 ---
 title: Simple BST With Ruby
 date: 2019-12-01
-tags:
+tags: ["RUBY"]
 ---
 
 ![vang con](/../images/vangcon.jpeg)
