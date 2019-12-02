@@ -4,6 +4,8 @@ date: 2019-12-01
 tags: ["TIL"]
 ---
 
+## 1. Example
+
 ```bash
 #!/bin/bash
 GREEN='\033[0;32m'
@@ -30,3 +32,17 @@ eval $deploy
 echo "${GREEN}============ Done =============================${NC}"
 
 ```
+
+## 2. Use multiple command in oneline
+
+We have two commands need to execute:
+
+eg: A, B
+
+We have three ways to execute A, B in one line.
+
+1. A; B (always run A, B)
+
+2. A && B (run B if A execute successful)
+
+3. A || B (run B if A execute failure)

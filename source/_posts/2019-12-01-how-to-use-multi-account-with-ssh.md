@@ -1,5 +1,5 @@
 ---
-title: Use multi accounts with SSH
+title: Use multiple accounts with SSH
 date: 2019-12-01
 tags: ["TIL"]
 ---
