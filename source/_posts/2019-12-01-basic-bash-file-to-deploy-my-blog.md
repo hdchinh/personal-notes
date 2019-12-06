@@ -41,8 +41,10 @@ eg: A, B
 
 We have three ways to execute A, B in one line.
 
-1. A; B (always run A, B)
+```bash
+A; B (always run A, B)
 
-2. A && B (run B if A execute successful)
+A && B (run B if A execute successful)
 
-3. A || B (run B if A execute failure)
+A || B (run B if A execute failure)
+```

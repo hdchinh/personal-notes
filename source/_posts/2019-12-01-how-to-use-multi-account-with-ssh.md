@@ -37,7 +37,9 @@ ssh-add -l
 
 ## 4. Create config file
 
-eg.
+> ~/.ssh/config
+
+eg:
 
 ```
 Host primary_github.github.com
