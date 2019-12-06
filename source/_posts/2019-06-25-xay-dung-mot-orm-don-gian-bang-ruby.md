@@ -2,11 +2,8 @@
 title: "A Simple ORM"
 date: 2019-06-26
 draft: false
-tags: ["orm", "ruby"]
-categories: ["rails notes"]
-mytag: "Ruby"
-mytrend: "COOL"
-# mytop: "TOP VIEWS"
+tags: ["ORM", "RUBY"]
+categories: ["RUBY"]
 ---
 
 # 1. Đặt vấn đề

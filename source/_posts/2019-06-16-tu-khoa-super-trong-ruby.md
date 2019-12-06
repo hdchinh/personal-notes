@@ -2,10 +2,8 @@
 title: "Từ Khoá Super Trong Ruby?"
 date: 2019-06-16
 draft: false
-tags: ["ruby"]
-categories: ["ruby notes"]
-mytag: "Ruby"
-mytrend: "COOL"
+tags: ["RUBY"]
+categories: ["RUBY"]
 
 ---
 

@@ -2,10 +2,8 @@
 title: "Exception Trong Rails"
 date: 2019-06-10
 draft: false
-tags: ["rails", "ruby"]
-categories: ["rails notes"]
-mytag: "Rails"
-mytrend: "COOL"
+tags: ["RAILS"]
+categories: ["RAILS"]
 ---
 
 # Đặt vấn đề

@@ -2,11 +2,8 @@
 title: "So Sánh Class Method Và Scope"
 date: 2019-06-09
 draft: false
-tags: ["ruby", "rails"]
-categories: ["rails notes"]
-mytag: "Rails"
-mytrend: "COOL"
-
+tags: ["RUBY", "RAILS"]
+categories: ["RAILS"]
 ---
 # Đặt vấn đề
 

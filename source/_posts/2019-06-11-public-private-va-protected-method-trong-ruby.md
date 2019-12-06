@@ -2,10 +2,8 @@
 title: "Public, Private Và Protected"
 date: 2019-06-11
 draft: false
-tags: ["ruby"]
-categories: ["ruby notes"]
-mytag: "Ruby"
-mytrend: "COOL"
+tags: ["RUBY"]
+categories: ["RUBY"]
 
 ---
 

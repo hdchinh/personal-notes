@@ -2,10 +2,8 @@
 title: "Symbol Và String Trong Ruby"
 date: 2019-06-09
 draft: false
-tags: ["ruby"]
-categories: ["ruby notes"]
-mytag: "Ruby"
-mytrend: "COOL"
+tags: ["RUBY"]
+categories: ["RUBY"]
 ---
 
 # Đặt vấn đề

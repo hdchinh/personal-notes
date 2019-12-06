@@ -2,10 +2,8 @@
 title: "Tấn Công SQL Injection"
 date: 2019-06-08
 draft: false
-tags: ["secure", "rails"]
-categories: ["rails notes"]
-mytag: "Secure"
-mytrend: "COOL"
+tags: ["SECURE", "RAILS"]
+categories: ["RAILS"]
 
 ---
 

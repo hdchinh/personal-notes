@@ -2,11 +2,8 @@
 title: "A Simple Rack Application"
 date: 2019-06-24
 draft: false
-tags: ["rack", "ruby"]
-categories: ["rails notes"]
-mytag: "Ruby"
-mytrend: "COOL"
-# mytop: "TOP VIEWS"
+tags: ["RACK", "RUBY"]
+categories: ["RUBY"]
 ---
 
 # 1. Đặt vấn đề

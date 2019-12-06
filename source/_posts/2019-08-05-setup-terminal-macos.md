@@ -3,7 +3,7 @@ title: "Terminal macOS Tricks"
 date: 2019-08-05
 draft: false
 tags: ["TIl"]
-categories: ["til"]
+categories: ["TIL"]
 mytag: "#TIL"
 ---
 

@@ -2,13 +2,10 @@
 title: "Tổng Quan Nguyên Lý SOLID"
 date: 2019-05-17
 draft: false
-tags: ["solid", "ruby"]
-categories: ["ruby notes", "programming"]
-mytag: "Ruby"
-mytrend: "COOL"
-# mytop: "TOP VIEWS"
+tags: ["SOLID", "RUBY"]
+categories: ["RUBY", "PROGRAMMING"]
 ---
-# Đặt vấn đề
+## Đặt vấn đề
 
 Cách đây một thời gian, tôi có làm một ứng dụng nhỏ với vỏn vẹn tổng cộng tầm 500 dòng code. Khi bắt đầu tôi đã mường tượng rằng đây chỉ là một chương trình đơn giản nên không cần phân chia gì cho tốn công sức màu mè. Vì vậy tôi chỉ code trên vài file nhất định.
 
@@ -16,9 +13,9 @@ Một thời gian sau, tôi cần mở rộng thêm 1 vài chức năng nữa, r
 
 Phần lớn thời gian một ứng dụng trên tay dev là để maintain, vậy nên việc ngày hôm nay bạn làm nó ra sao ảnh hưởng rất lớn đến sau này. Đó là một phần lý do mà tôi phải tìm đường cách mạng qua SOLID và những mẫu design pattern, những thứ văn vở mà ngày xưa tôi rất ghét và thấy thừa thãi, nhưng giờ đây nó như một bầu trời chân lý sáng chói loé qua tim.
 
-# Luận bàn
+## Luận bàn
 
-# 1. Định nghĩa và mục tiêu sử dụng
+## 1. Định nghĩa và mục tiêu sử dụng
 
 ![hoa](/images/solid.png)
 
@@ -50,7 +47,7 @@ Giả sử tôi phải xử lý một bài toán tính promotion cho một ứng
 
 Trong đó signin chứa mã nguồn thực hiện chức năng đăng nhập, signup chứa mã thực hiện chức năng đăng ký và checkout chứa mã thực hiện chức năng thanh toán.
 
-# 2. **S**ingle Responsibility Principle
+## 2. **S**ingle Responsibility Principle
 
 ![hoa](/images/srp.jpg)
 
@@ -106,7 +103,7 @@ Nguyên lý SRP có thể sai hay đúng trong một số trường hợp là r�
 
 Note: Nhưng cuối cùng nguyên lý SRP cũng chỉ có một mục đích duy nhất để cấu trúc dự án dễ sửa đổi và bảo trì, vì vậy trong từng tình huống sẽ có những cách khác nhau để phân chia tổ chức mã nguồn, dựa vào chức năng, dựa vào yêu cầu khách hàng, dựa vào tiềm năng phát triển dự án...
 
-# 3. **O**pen/Closed Principle
+## 3. **O**pen/Closed Principle
 
 ![hoa](/images/ocp.jpg)
 
@@ -182,7 +179,7 @@ class PromotionTypeX < Promotion
 end
 ```
 
-# 4. **L**iskov Substitution Principle
+## 4. **L**iskov Substitution Principle
 
 ![hoa](/images/lsp.jpg)
 
@@ -254,7 +251,7 @@ temp.animal_hello
 
 Ta có thể thấy, instance của class Cat khi gọi tới method animal_hello đã không còn trả về kết quả tương tự như một instance Animal nữa rồi, vì lý do ở class Cat, class này đã override lại phương thức animal_hello, và từ đó dẫn tới vi phạm nguyên tắc Liskov.
 
-# 5. **I**nterface Segregation Principle
+## 5. **I**nterface Segregation Principle
 
 ![hoa](/images/isp.png)
 
@@ -403,7 +400,7 @@ end
 
 Ok, vậy là look good rồi :smile: Lúc này class Animal chỉ được include những method mà nó cần và class YellowCat cũng vậy.
 
-# 6. **D**ependency Inversion Principle
+## 6. **D**ependency Inversion Principle
 
 ![hoa](/images/dip.jpg)
 
@@ -473,7 +470,7 @@ end
 Checkout.new.get_bill(cart, PromotionTypeB)
 ```
 
-# Kết luận
+## Kết luận
 
 Trên đây là 1 cái nhìn tổng quan về hệ thống nguyên lý SOLID nổi tiếng, việc áp dụng nguyên lý này sẽ không chắc giúp mã nguồn bạn thành công, nhưng nó sẽ giảm thiểu rủi ro hơn là khi code bất chấp, lý thuyết chỉ là một phần nhỏ, nắm lý thuyết giúp chúng ta có cái nhìn tổng quát, trích rút lại thì thứ làm cho nguyên lý này có giá trị nằm ở kinh nghiệm sử dụng của nhà phát triển, không phải luôn luôn tuân thủ mọi quy tắc đã là tốt trong mọi trường hợp.
 
