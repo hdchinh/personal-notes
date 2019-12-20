@@ -111,6 +111,15 @@ def update(current_value, new_value)
 end
 ```
 
+## Get Depth
+
+```ruby
+def max_depth(root)
+  return 0 if root.nil?
+  return [max_depth(root.left), max_depth(root.right)].max + 1
+end
+```
+
 ## Example
 
 ```ruby
