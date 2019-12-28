@@ -42,6 +42,8 @@ end
 
 ## [container-with-most-water](https://leetcode.com/problems/container-with-most-water/submissions/)
 
+![bai giai](/../images/question_11.jpg)
+
 ```ruby
 def get_container_water(arr, a, b)
   h = arr[a] >= arr[b] ? arr[b] : arr[a]
