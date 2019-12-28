@@ -109,7 +109,7 @@ hello('Chinh', 25)
 
 what will it return?
 
-**Error**: yes, it will response a error, but why?
+**Error**: yes, it will response an error, but why?
 
 Because, with **keyword arguments**, you need to pass argumetns like a hash you declare when initial method. (**same key**).
 
