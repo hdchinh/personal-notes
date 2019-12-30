@@ -87,20 +87,24 @@ clone_obj.name = "Duy Chinh"
 clone_obj.location.city = "Nam Dinh"
 
 console.log(obj)
-// result look like:
-
-// {
-//   name: "Chinh",
-//   age: 25,
-//   location: {
-//     city: "Nam Dinh"
-//   }
-// }
-
-// city in original object has changed
 ```
+
+The result will be:
+
+```javascript
+{
+  name: "Chinh",
+  age: 25,
+  location: {
+    city: "Nam Dinh"
+  }
+}
+```
+
+City in original object has changed
 
 ## References
 
 [1][https://www.samanthaming.com/tidbits/50-how-to-deep-clone-an-array](https://www.samanthaming.com/tidbits/50-how-to-deep-clone-an-array)
+
 [2][https://www.samanthaming.com/tidbits/70-3-ways-to-clone-objects](https://www.samanthaming.com/tidbits/70-3-ways-to-clone-objects)
