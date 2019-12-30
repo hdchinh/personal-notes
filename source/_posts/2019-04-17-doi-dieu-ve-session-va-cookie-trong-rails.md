@@ -2,14 +2,17 @@
 title: "Session Vs Cookies Trong Rails"
 date: 2019-04-17
 draft: false
-tags: ["rails", "secure"]
-categories: ["rails notes"]
-mytag: "Rails"
-mytrend: "COOL"
+tags: ["RAILS"]
 ---
 
 # Đặt vấn đề
 `session[:user_id] = @user.id`, dòng code này thật quen thuộc? khi làm chức năng đăng nhập trong những ngày nhập môn, hẳn ai cũng đã từng làm qua hoặc làm gần giống như vậy, ta được dạy rằng, `http` là 1 giao thức không có trạng thái nên request thứ `N + 1` sẽ chẳng thể biết được request thứ `N` đã làm gì, vậy nếu ở lần request thứ `N` chúng ta đã thực hiện hành vi đăng nhập, và `http` thì không có lưu vết lại điều đó, hệ quả là ở lần request tiếp theo, website hiểu như bạn chưa đăng nhập, rất đáng buồn.
+
+Do you familiar with the logic below:
+
+```ruby
+session[:user_id] = @user.id
+```
 
 Cũng theo những gì được dạy, `session/cookies` được tạo ra với mục đích làm cho http request có "trạng thái". Vì sao lại để từ trạng thái trong nháy kép, vì thực sự là `http` không bao giờ có trạng thái cả, mà `session/cookies` với khả năng lưu vết của mình có thể giúp website nắm được một số **thông tin** từ client đã request trước đó và làm chúng giống như `http` đã có trạng thái.
 

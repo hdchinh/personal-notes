@@ -5,6 +5,7 @@ draft: false
 tags: ["til"]
 categories: ["rails notes"]
 mytag: "#TIL"
+label: "[@til]"
 ---
 
 **SaaS:  Software as a Service**

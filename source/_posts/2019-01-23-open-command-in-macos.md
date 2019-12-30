@@ -2,7 +2,7 @@
 title: "Lệnh Open Trên Unix?"
 date: 2018-01-23
 draft: false
-tags: ["unix"]
+tags: ["UNIX"]
 categories: ["hệ điều hành"]
 mytag: "OS"
 mytrend: "COOL"

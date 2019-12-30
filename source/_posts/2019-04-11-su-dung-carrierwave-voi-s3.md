@@ -5,6 +5,7 @@ draft: false
 tags: ["rails", "aws", "carrierwave", "til"]
 categories: ["rails notes"]
 mytag: "#TIL"
+label: "[@til]"
 ---
 
 # Gemfile
