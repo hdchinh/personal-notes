@@ -10,7 +10,7 @@ label: "[@til]"
 
 ## 1. Config to show branch in Terminal
 
-Open `.bash_profile` file then add:
+Open **.bash_profile** file then add:
 
 ```shell
 parse_git_branch() {
@@ -30,7 +30,7 @@ sudo ln -s /Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl /usr/
 
 ## 3. Setup to use code command in macOS
 
-In VSCode Window, press `command` + `shift` + `P` to open package install. Type `shell` to find package `Shell Command : Install code in PATH`, install and done.
+In VSCode Window, press **command** + **shift** + **P** to open package install. Type **shell** to find package **Shell Command : Install code in PATH**, install and done.
 
 References:
 

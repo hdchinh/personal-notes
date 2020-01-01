@@ -34,13 +34,13 @@ mytag: "#TIL"
 ### Open Classes
 
 
-`rails g model Movie title:string director:string`
+**rails g model Movie title:string director:string**
 
 ```ruby
 class Movie < ActiveRecord:Base; end
 ```
 
-1) What about methods such as `title=` and title, which access object attributes (accessor methods for short)? This is where metaprogramming comes in: Bob doesn’t have to write those methods. Active Record defines them automatically, after inferring their names from the database schema. ActiveRecord::Base reads the schema at runtime, discovers that the movies table has two columns named title and director, and defines accessor methods for two attributes of the same name. This means that Active Record defines methods such as `Movie#title` and `Movie#director=` out of thin air while the program runs.
+1) What about methods such as **title=** and title, which access object attributes (accessor methods for short)? This is where metaprogramming comes in: Bob doesn’t have to write those methods. Active Record defines them automatically, after inferring their names from the database schema. ActiveRecord::Base reads the schema at runtime, discovers that the movies table has two columns named title and director, and defines accessor methods for two attributes of the same name. This means that Active Record defines methods such as **Movie#title** and **Movie#director=** out of thin air while the program runs.
 
 Open Class
 ```ruby
@@ -74,7 +74,7 @@ To be precise, a class is a module with three additional instance methods (new, 
 
 10) These are instance methods of the Class class. Like any object, a class has its own methods, such as new. Also like any object, classes must be accessed through references. You already have a constant reference to each class: the class’s name.
 
-11) Using load, however, has a side effect. The motd.rb file probably defines variables and classes. Although variables fall out of scope when the file has finished loading, constants don’t. As a result, motd.rb can pollute your program with the names of its own constants—in particular, class names. You can force motd.rb to keep its constants to itself by passing a second, optional argument to load: `load('motd.rb', true)` If you load a file this way, Ruby creates **an anonymous module**, uses that module as a Namespace to contain all the constants from motd.rb, and then destroys the module. The require method is quite similar to load, but it’s meant for a different purpose. You use load to execute code, and you use require to import libraries. That’s why require has no second argument: those leftover class names are probably the reason why you imported the file in the first place. Also, that’s why require tries only once to load each file, while load executes the file again every time you call it.
+11) Using load, however, has a side effect. The motd.rb file probably defines variables and classes. Although variables fall out of scope when the file has finished loading, constants don’t. As a result, motd.rb can pollute your program with the names of its own constants—in particular, class names. You can force motd.rb to keep its constants to itself by passing a second, optional argument to load: **load('motd.rb', true)** If you load a file this way, Ruby creates **an anonymous module**, uses that module as a Namespace to contain all the constants from motd.rb, and then destroys the module. The require method is quite similar to load, but it’s meant for a different purpose. You use load to execute code, and you use require to import libraries. That’s why require has no second argument: those leftover class names are probably the reason why you imported the file in the first place. Also, that’s why require tries only once to load each file, while load executes the file again every time you call it.
 
 What’s the class of Object?
 What’s the superclass of Module?
@@ -86,7 +86,7 @@ What’s the class of Class?
 1. It finds the method. This is a process called method lookup.
 2. It executes the method. To do that, Ruby needs something called self.
 
-13) Before you look at a more complicated example, though, you need to know about two new concepts: the receiver and the ancestors chain.The receiver is the object that you call a method on. For example, if you write `my_string.reverse()`, then `my_string` is the receiver. To understand the concept of an ancestors chain, look at any Ruby class. Then imagine moving from the class into its superclass, then into the superclass’s superclass, and so on, until you reach BasicObject, the root of the Ruby class hierarchy. The path of classes you just traversed is the ancestors chain of the class.
+13) Before you look at a more complicated example, though, you need to know about two new concepts: the receiver and the ancestors chain.The receiver is the object that you call a method on. For example, if you write **my_string.reverse()**, then **my_string** is the receiver. To understand the concept of an ancestors chain, look at any Ruby class. Then imagine moving from the class into its superclass, then into the superclass’s superclass, and so on, until you reach BasicObject, the root of the Ruby class hierarchy. The path of classes you just traversed is the ancestors chain of the class.
 MySubclass.ancestors # => [MySubclass, MyClass, Object, Kernel, BasicObject]
 
 14) When you include a module in a class (or even in another module), Ruby inserts the module in the ancestors chain, right above the including class itself:
@@ -115,7 +115,7 @@ Kernel.private_instance_methods.grep(/^pr/) # => [:printf, :print, :proc]
 
 21) As soon as you start a Ruby program, you’re sitting within an object named main that the Ruby interpreter created for you. This object is sometimes called the top-level context, because it’s the object you’re in when you’re at the top level of the call stack: either you haven’t called any method yet or all the methods that you called have returned.
 
-22) This code refines the String class with a new to_alphanumeric method. Differently from a regular Open Class, however, a Refinement is not active by default. If you try to call   `String#to_alphanumeric`, you’ll get an error: `"my *1st* refinement!".to_alphanumeric ❮ NoMethodError: undefined method 'to_alphanumeric' [...]` To activate the changes, you have to do so explicitly, with the using method: using StringExtensions
+22) This code refines the String class with a new to_alphanumeric method. Differently from a regular Open Class, however, a Refinement is not active by default. If you try to call   **String#to_alphanumeric**, you’ll get an error: **"my *1st* refinement!".to_alphanumeric ❮ NoMethodError: undefined method 'to_alphanumeric' [...]** To activate the changes, you have to do so explicitly, with the using method: using StringExtensions
 
 23) you can call refine in a regular module, but you cannot call it in a class, even if a class is itself a module.
 
@@ -313,7 +313,7 @@ end
 => không lấy nhầm method trong class Object, vì lớp Computer được kế thừa trực tiếp từ BasicObject
 
 30) Inheriting from BasicObject is the quicker way to define a Blank Slate in Ruby.
-`class Computer < BasicObject`
+**class Computer < BasicObject**
 
 31) You can remove a method from a class by using either Module#undef_method or Module#remove_method. The drastic undef_method removes any method, including the inherited ones. The kinder remove_method removes the method from the receiver, but it leaves inherited methods alone. Let’s look at a real-life library that uses undef_method to create a Blank Slate.
 

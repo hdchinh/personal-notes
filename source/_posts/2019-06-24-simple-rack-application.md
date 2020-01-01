@@ -3,11 +3,10 @@ title: "A Simple Rack Application"
 date: 2019-06-24
 draft: false
 tags: ["RACK", "RUBY"]
-categories: ["RUBY"]
 ---
 
-# 1. Đặt vấn đề
-Có lẽ cũng như tôi, khi mới tiếp cận với một framework ruby như Rails chẳng hạn, bạn đã nghe về Rack? hoặc ít ra cũng từng thấy cái `gem rack` trong Gemfile. Nhưng có khi nào bạn dùng đến chúng? Không ư? Tôi cũng nghĩ vậy, tôi cũng kệ, tôi cũng chả quan tâm, cuộc sống không đủ high hay sao mà lại đâm đầu vào cái khó :alien:.
+## 1. Đặt vấn đề
+Có lẽ cũng như tôi, khi mới tiếp cận với một framework ruby như Rails chẳng hạn, bạn đã nghe về Rack? hoặc ít ra cũng từng thấy cái **gem rack** trong Gemfile. Nhưng có khi nào bạn dùng đến chúng? Không ư? Tôi cũng nghĩ vậy, tôi cũng kệ, tôi cũng chả quan tâm, cuộc sống không đủ high hay sao mà lại đâm đầu vào cái khó :alien:.
 
 Nhưng làm việc hàng ngày với nó mà không hiểu nó là gì luôn làm cho ta cảm giác bất an vô định, cập nhật CV là Developer mà đi phỏng vấn được hỏi rack là gì, lại trả lời "em...em..em hông biết" thì liệu có bị đánh xuống rank junior hay không? Thôi thì cứ tìm hiểu coi nó ra sao.
 
@@ -15,14 +14,14 @@ Và thế là tôi đã đọc docs trên trang chủ của Rack, nói chung đ�
 
 Vậy nên tôi sẽ viết một ứng dụng Rack (chạy trên Rack) very..very simple, để tôi và có thể cả bạn có cái nhìn thoáng qua về Rack trước đã, chứ tôi thấy hiểu biết hiện tại của mình chưa đủ để chém gió hàn lâm về chủ đề này (hy vọng tương lai gần sẽ có bài chém gió hàn lâm).
 
-# 2. Tham khảo?
+## 2. Tham khảo?
 
 1. Bài viết này tôi tham khảo cách sử dụng Rack trên trang chủ của Rack [tại đây](https://rack.github.io/) và trên mục docs của ruby [tại đây](https://www.rubydoc.info/github/rack/rack/).
 
 2. Ứng dụng rất thô sơ và KHÔNG sử dụng "bét pờ rạch tít" nào cả.
 
 
-# 3. Kiến thức cần chuẩn bị trước.
+## 3. Kiến thức cần chuẩn bị trước.
 
 Dù ít dù nhiều thì vẫn phải đánh qua lý thuyết một chút trước khi mày mò làm gì đó. Một số khái niệm/quy trình chúng ta nên nắm trước như sau:
 
@@ -32,15 +31,15 @@ Ex: Nếu tôi sử dụng Rails với app server là Puma, web server là Nginx
 
 ![hoa](/images/rack.jpeg)
 
-Note: Khái niệm `web server` và `app server` chúng ta sẽ bàn tới sau.
+Note: Khái niệm **web server** và **app server** chúng ta sẽ bàn tới sau.
 
-2) Như hình trên, ta có thể thấy Rack sẽ giao tiếp với `app server`, nên Rack sẽ nhận request từ app server gửi qua, với nội dung lằng nhằng rối rắm gì đó, sau đó Rack sẽ `làm gì đó` với cái request rối rắm kia, rồi gửi kết quả mà Rails có thể hiểu và thực thi được. Sau đó Rails sẽ gửi về cho Rack kết quả cũng rối rắm không kém và nhiệm vụ của Rack lại là tiếp tục `làm gì đó` cái kết quả từ Rails, sao cho chuyển kết quả đó thành 1 thứ gì đó mà app server có thể hiểu, cuối cùng app server quăng kết quả về cho người dùng.
+2) Như hình trên, ta có thể thấy Rack sẽ giao tiếp với **app server**, nên Rack sẽ nhận request từ app server gửi qua, với nội dung lằng nhằng rối rắm gì đó, sau đó Rack sẽ **làm gì đó** với cái request rối rắm kia, rồi gửi kết quả mà Rails có thể hiểu và thực thi được. Sau đó Rails sẽ gửi về cho Rack kết quả cũng rối rắm không kém và nhiệm vụ của Rack lại là tiếp tục **làm gì đó** cái kết quả từ Rails, sao cho chuyển kết quả đó thành 1 thứ gì đó mà app server có thể hiểu, cuối cùng app server quăng kết quả về cho người dùng.
 
 Note: Vậy Rack như một phiên dịch viên để truyền đạt giữa ứng dụng và app server (Không thật sự đúng về bản chất nhưng ta cứ tạm chấp nhận liên tưởng này).
 
-# 4. Build một simple Rack application
+## 4. Build một simple Rack application
 
-- Tạo 1 Folder với 1 file tên `Gemfile` có nội dung như sau:
+- Tạo 1 Folder với 1 file tên **Gemfile** có nội dung như sau:
 
 ```ruby
 source 'https://rubygems.org'
@@ -48,17 +47,17 @@ source 'https://rubygems.org'
 gem 'rack'
 ```
 
-- Cài đặt gem vói lệnh `bundle install`
+- Cài đặt gem vói lệnh **bundle install**
 
-- Tạo file `config.ru`.
+- Tạo file **config.ru**.
 
 Note: Đây sẽ là file main để xử lý request.
 
-- Chạy project với lệnh `bundle exec rackup`
+- Chạy project với lệnh **bundle exec rackup**
 
 > Project demo [tại đây!](https://github.com/hdchinh/simple-rack-app)
 
-# 5. Giải thích nội dung mã nguồn của app demo
+## 5. Giải thích nội dung mã nguồn của app demo
 
 ```ruby
 map '/signup_user' do
@@ -94,9 +93,9 @@ map '/' do
 end
 ```
 
-Nếu truy cập theo trang chủ thì sẽ chạy lệnh `run HomePage.new`.
+Nếu truy cập theo trang chủ thì sẽ chạy lệnh **run HomePage.new**.
 
-Nếu url người dùng request không trùng bất cứ trường hợp nào thì chạy lệnh `run MyNotFound.new` ở cuối.
+Nếu url người dùng request không trùng bất cứ trường hợp nào thì chạy lệnh **run MyNotFound.new** ở cuối.
 
 Một class sẽ có dạng như sau:
 
@@ -148,6 +147,6 @@ Bạn thấy phức tạp? Không sao cả, chỉ cần chú ý đến dòng cu�
   2. Một hash, ở đây chính là header, chứa những thông tin mà trình duyệt cần.
   3. Phần tử cuối cùng là một mảng, chính là phần body của kết quả trả về.
 
-# 6. Kết luận
+## 6. Kết luận
 
 Trên là một basic app xây dựng với Rack, vì định nghĩa chỉ đọc không làm sẽ rất khó hiểu, nên tôi làm demo trước, hy vọng trong thời gian tới nếu kiến thức thu lượm đủ để viết về cách vận hành của Rack một cách sâu sắc, tôi có thể tiếp tục chủ đề này.

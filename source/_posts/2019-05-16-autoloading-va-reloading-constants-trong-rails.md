@@ -7,7 +7,7 @@ categories: ["rails notes"]
 mytag: "#TIL"
 ---
 
-# Đặt vấn đề
+## Đặt vấn đề
 
 ```ruby
 class CatsController < ApplicationController
@@ -17,7 +17,7 @@ end
 
 Đoạn mã trên là một đoạn mã rất quen thuộc khi sử dụng rails framework, một câu hỏi đó là tại sao trong class CatsController không require file chưa class ApplicationController nhưng ta vẫn có thể sử dụng. Câu trả lời nằm ở việc rails có cơ chế autoloading một số folder nhất định để support cho việc coding và vận hành, bài viết này sẽ nêu một cách khái quát về giải pháp này trong rails.
 
-# Luận bàn
+## Luận bàn
 
 Như bài viết trước đã đề cập về cách mà phương thức require hoạt động:
 
@@ -37,7 +37,7 @@ Như bài viết trước đã đề cập về cách mà phương thức requir
 
 Ta có thể xem danh sách này bằng câu lệnh:
 
-`bin/rails r 'puts ActiveSupport::Dependencies.autoload_paths'`
+**bin/rails r 'puts ActiveSupport::Dependencies.autoload_paths'**
 
 **eager_load_paths** hoàn toàn giống như khái niệm về autoload_paths đã nêu ở trên. Điểm chúng ta cần lưu ý đó là:
 
@@ -47,13 +47,13 @@ Ta có thể xem danh sách này bằng câu lệnh:
 
 Ta có 2 từ in hoa, đó là phần quan trọng, để đảm bảo tính nhất quán và hoạt động một cách ổn định và chính xác, trong môi trường production ta sử dụng eager_load_paths để load toàn bộ những file cần thiết cho các hệ thống cần thì sử dụng, còn ở môi trường phát triển, để khởi chạy ứng dụng nhanh chóng hơn và dễ dàng cập nhật các thay đổi thì ta sử dụng autoload_paths.
 
-Việc thiết lập này phụ thuộc vào cấu hình của bạn trong thư mục `app/config/envirements/...` với 2 cấu hình là:
+Việc thiết lập này phụ thuộc vào cấu hình của bạn trong thư mục **app/config/envirements/...** với 2 cấu hình là:
 
-- config.cache_classes
+1. config.cache_classes
 
-- config.eager_load
+2. config.eager_load
 
-# Kết luận
+## Kết luận
 
 Tham khảo:
 

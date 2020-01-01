@@ -7,7 +7,7 @@ categories: ["RAILS"]
 
 ---
 
-# Đặt vấn đề
+## Đặt vấn đề
 
 Trong project của bạn, đã bao giờ bạn sử dụng câu lệnh có dạng như:
 
@@ -17,11 +17,11 @@ Trong project của bạn, đã bao giờ bạn sử dụng câu lệnh có dạ
 
 Nếu có, thì bạn đã vô tình tạo một lỗ hổng về an toàn cho website của mình. Hãy cùng tìm hiểu vì sao lại như vậy.
 
-# Luận bàn
+## Luận bàn
 
-# 1. Tìm hiểu về Sql Injection
+## 1. Tìm hiểu về Sql Injection
 
-Quay lại ví dụ bên trên, nội dung câu lệnh này nhắm lấy ra sản phẩm có tên là `Meo con di lon ton`. Vậy có gì sai nhỉ?
+Quay lại ví dụ bên trên, nội dung câu lệnh này nhắm lấy ra sản phẩm có tên là **Meo con di lon ton**. Vậy có gì sai nhỉ?
 
 Để nói rõ hơn, thì câu lệnh này là một câu lệnh được support bởi 1 thư viện ORM mặc định trong rails tên là ActiveRecord. Nó sẽ được phiên dịch thành mã sql như sau:
 
@@ -43,7 +43,7 @@ Vậy có gì mà không ổn?
 
 Với những người dùng thông thường thì. Đúng, mã nguồn của chúng ta hoàn toàn ổn. Nhưng nếu bạn là một ông chủ giàu có của một website nổi tiếng, và có nhiều kẻ ghét bạn vì bạn giàu hoặc nhìn mặt bạn thấy ghét và muốn tìm cách phá hoại website bạn thì sao?
 
-**Vậy là thay vì gửi một product_name thông thường như "iphone x", "ghế tình yêu"...Thì họ lại gửi một product_name có dạng như  `chinh' or '' = '`**
+**Vậy là thay vì gửi một product_name thông thường như "iphone x", "ghế tình yêu"...Thì họ lại gửi một product_name có dạng như  **chinh' or '' = '****
 
 Lúc này truy vấn của chúng ta sẽ trở thành:
 
@@ -63,7 +63,7 @@ Và như vậy dữ liệu website của bạn đã bị lộ trước những k
 
 Trên đây chỉ là một ví dụ sơ sài, trong thực tế dữ liệu của bạn sẽ quan trọng hơn nhiều là cái products information như trên. Có thể là thông tin liên lạc, địa chỉ nhà, thông tin tài khoản ngân hàng...
 
-# 2. Cách phòng tránh Sql Injection trong rails.
+## 2. Cách phòng tránh Sql Injection trong rails.
 
 Có thể thấy khi để query dạng string như trên thì rất dễ bị khai thác, vì ActiveRecord sẽ không thể validate giá trị input mà người dùng nhập vào có hợp lệ hay không. Vậy cách tốt nhất để chống lại Sql injection chính là sử dụng query theo params thay vì sử dụng chuỗi như trên.
 
@@ -86,6 +86,6 @@ Ta có thể viết dưới dạng params query như sau:
 Với các cách thay thế, giá trị người dùng truyền vào sẽ được đảm bảo hợp lệ trước khi có dữ liệu trả về...
 
 
-# Kết luận.
+## Kết luận.
 
 Đây là một bài sơ sài, ngắn gọn và khái quát cho người mới tìm hiểu về sql injection. Không phải bài viết chuyên sâu dành cho người có nhiều kinh nghiệm. Hãy để lại thảo luận nếu bạn có thắc mắc.

@@ -9,34 +9,34 @@ mytrend: "COOL"
 
 ---
 
-# Đặt vấn đề
+## Đặt vấn đề
 
-Đi luôn vào chủ đề, khi mới bắt đầu với môn mạng máy tính ở trường đại học, sự mập mờ khi còn ngồi trên ghế nhà trường khiến chúng ta đôi khi đã nhầm lẫn về `http` và `https`, nhớ ngày đó tôi đã từng nghĩ chúng là 2 giao thức khác nhau, à mà ngày đó tôi có hiểu giao thức là gì không nhỉ :fearful: thôi dẹp qua một bên, bản chất của `https` cũng là giao thức `http` nhưng thêm được chữ `s` ứng với `secure`. Nghe thôi đã thấy bảo mật rồi, `https` ra đời nhằm mục đích làm cho giao thức `http` trở nên an toàn hơn, vậy nó làm cho `http` trở nên an toàn hơn như thế nào?
+Đi luôn vào chủ đề, khi mới bắt đầu với môn mạng máy tính ở trường đại học, sự mập mờ khi còn ngồi trên ghế nhà trường khiến chúng ta đôi khi đã nhầm lẫn về **http** và **https**, nhớ ngày đó tôi đã từng nghĩ chúng là 2 giao thức khác nhau, à mà ngày đó tôi có hiểu giao thức là gì không nhỉ :fearful: thôi dẹp qua một bên, bản chất của **https** cũng là giao thức **http** nhưng thêm được chữ **s** ứng với **secure**. Nghe thôi đã thấy bảo mật rồi, **https** ra đời nhằm mục đích làm cho giao thức **http** trở nên an toàn hơn, vậy nó làm cho **http** trở nên an toàn hơn như thế nào?
 
-# Luận bàn
+## Luận bàn
 
-# 1. Http hiểu đơn giản thì hoạt động thế nào?
+## 1. Http hiểu đơn giản thì hoạt động thế nào?
 
 Mục đích cuối cùng của mớ hỗn độn rối rắm này cũng là truyền nhận thông tin, tôi có một website tôi muốn gửi nó lên mạng internet để bạn, một ai đó mà tôi không quen có thể vô tình lướt qua đọc được.
 Http là một giao thức, hiểu đơn giản là một bộ quy tắc để chung để người sử dụng dùng trình duyệt có thể truy cập tới 1 trang web, và trang web đó hiểu được yêu cầu đó rồi trả về nội dung mà trình duyệt có thể hiểu được, ví như có nhiều ngôn ngữ trên thế giới, vậy giữa 2 người có 2 tiếng nói khác nhau để giao tiếp được họ phải cùng nhau sử dụng một bộ ngôn ngữ chung mà cả hai cùng hiểu được.
 
-Một đặc điểm cơ bản của `http` là nó truyền nhận thông tin dưới dạng **text** thông thường, không hề mã hoã, điều này dẫn tới vấn đề đó là thông tin được truyền nhận nhanh chóng, nhẹ nhàng, nội dung rất thân thiện với người dùng (vì nó là text mà).
+Một đặc điểm cơ bản của **http** là nó truyền nhận thông tin dưới dạng **text** thông thường, không hề mã hoã, điều này dẫn tới vấn đề đó là thông tin được truyền nhận nhanh chóng, nhẹ nhàng, nội dung rất thân thiện với người dùng (vì nó là text mà).
 
 Mọi thứ có vẻ good? không hẳn như vậy, việc dữ liệu truyền gửi được lưu dưới dạng text khiến nó quá thân thiện với người dùng, mà người dùng thì không phải ai cũng tốt :smirk: . Có những người dùng mà mục đích họ tới với website của bạn là để phá hoại, họ sẽ dễ dàng tấn công bằng cách nào đó lấy được request của bạn rồi đọc được nội dung trong request đó 1 cách dễ dàng.
 
 Bài học: Không phải lúc nào cũng nên quá thân thiện với người dùng cuối :worried:
 
-# 2. Https khắc phục vấn đề của http như thế nào?
+## 2. Https khắc phục vấn đề của http như thế nào?
 
-Chúng ta đã nắm được khái quát vấn đề bảo mật gặp phải khi sử dụng `http`. Với những website giải trí thuần tuý với nội dung chủ yếu là hình ảnh, âm thanh và không có thông tin cần bảo mật thì sử dụng https hình như cũng chỉ để tốt cho SEO, ngoài ra cũng không còn giá trị gì. Nhưng nếu bạn sử dụng **Internet Banking** với http, rồi bạn đăng nhập với tài khoản ngân hàng của mình trên đó, mọi thông tin bạn gửi đi đều dưới dạng những gói tin có nội dung plain/text trần trụi, vậy điều gì bảo vệ được tài khoản của bạn nếu request kể trên bị những kẻ xấu dùng những thủ thuật hay phần mềm chuyên dụng để bắt được?
+Chúng ta đã nắm được khái quát vấn đề bảo mật gặp phải khi sử dụng **http**. Với những website giải trí thuần tuý với nội dung chủ yếu là hình ảnh, âm thanh và không có thông tin cần bảo mật thì sử dụng https hình như cũng chỉ để tốt cho SEO, ngoài ra cũng không còn giá trị gì. Nhưng nếu bạn sử dụng **Internet Banking** với http, rồi bạn đăng nhập với tài khoản ngân hàng của mình trên đó, mọi thông tin bạn gửi đi đều dưới dạng những gói tin có nội dung plain/text trần trụi, vậy điều gì bảo vệ được tài khoản của bạn nếu request kể trên bị những kẻ xấu dùng những thủ thuật hay phần mềm chuyên dụng để bắt được?
 
 Https giải bài toán trên bằng cách rất đơn giản, nội dung dạng plain/text giúp kẻ gian có thể bắt và đọc dễ dàng, vậy chúng ta hãy mã hoá nội dung để kẻ gian đó không thể hiểu được, và có bắt được gói tin cũng vô dụng?.
 
-# 3. Https và vấn đề mã hoá dữ liệu
+## 3. Https và vấn đề mã hoá dữ liệu
 
 Trước tiên phải làm rõ là:
 
-**`https = http + ssl`**
+**https = http + ssl**
 
 Trong đó:
 
@@ -46,11 +46,11 @@ Trong đó:
 
 ![tam the tu tin](/images/7.gif)
 
-Flow tối thiểu của `https` sẽ như sau:
+Flow tối thiểu của **https** sẽ như sau:
 
-1. `Client hello`, người dùng sử dụng trình duyệt sẽ request tới google.com.
+1. **Client hello**, người dùng sử dụng trình duyệt sẽ request tới google.com.
 
-2. `Server hello`, request ở bước một đã tới nơi, server sẽ gửi trả client 2 thông tin quan trọng đó là **ssl certificate** (Để chứng minh "Ê, tao là google.com thật nha, not fake") và 1 **Public key** (Gọi là Public-key-1. *Vậy ta có thể hiểu là ở Server google.com nó đang giữ Private key 1 ứng với Public key 1 kia*).
+2. **Server hello**, request ở bước một đã tới nơi, server sẽ gửi trả client 2 thông tin quan trọng đó là **ssl certificate** (Để chứng minh "Ê, tao là google.com thật nha, not fake") và 1 **Public key** (Gọi là Public-key-1. *Vậy ta có thể hiểu là ở Server google.com nó đang giữ Private key 1 ứng với Public key 1 kia*).
 
 3. Browser sẽ xác minh **ssl certificate** nhận được để xem nó có phải là hàng real hay không. Vậy còn làm sao mà browser có thể phân định thật giả? Chúng ta sẽ tìm hiểu trong 1 bài viết khác.
 

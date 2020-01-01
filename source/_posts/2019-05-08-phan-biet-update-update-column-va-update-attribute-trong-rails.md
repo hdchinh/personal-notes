@@ -2,23 +2,21 @@
 title: "Cập Nhật Dữ Liệu Với ActiveRecord"
 date: 2019-05-08
 draft: false
-tags: ["activerecord", "rails"]
-categories: ["rails notes"]
-mytag: "#TIL"
-
+tags: ["RAILS"]
+label: "[@til]"
 ---
 
-# Đặt vấn đề
+## Đặt vấn đề
 
-Ngoài phương thức thông dụng `update` để cập nhật dữ liệu. Rails nói chung hay Activerecord nói riêng còn cung cấp 1 số phương thức khác để thay đổi dữ liệu hiện có, hãy cùng tìm hiểu về chúng.
+Ngoài phương thức thông dụng **update** để cập nhật dữ liệu. Rails nói chung hay Activerecord nói riêng còn cung cấp 1 số phương thức khác để thay đổi dữ liệu hiện có, hãy cùng tìm hiểu về chúng.
 
-# Luận bàn
+## Luận bàn
 
 **Chuẩn bị:**
 
-1. Tôi có một model `Cat` với 2 thuộc tính là `age` và `name`.
+1. Tôi có một model **Cat** với 2 thuộc tính là **age** và **name**.
 
-2. Trong model Cat tôi có 1 `validation` và 1 `callback` đơn giản.
+2. Trong model Cat tôi có 1 **validation** và 1 **callback** đơn giản.
 
 **Để so sánh các phương thức chúng ta chú ý đến một số điểm sau:**
 
@@ -32,7 +30,7 @@ Ngoài phương thức thông dụng `update` để cập nhật dữ liệu. Ra
 
 5. Trường update_at có được cập nhật hay không?
 
-# 1. Phương thức update
+## 1. Phương thức update
 
 **Instance method:**
 
@@ -81,9 +79,9 @@ Note:
 
 2. Validate và callback đều được chạy.
 
-3. Class method `update` thì có thể cập nhật nhiều record một lúc.
+3. Class method **update** thì có thể cập nhật nhiều record một lúc.
 
-# 2. Phương thức update_attribute và update_attributes
+## 2. Phương thức update_attribute và update_attributes
 
 Phương thức update_attribute nhận 2 tham số truyền vào, với tham số thứ nhất là field cần cập nhật và tham số thứ 2 là giá trị cập nhật (Khác với update, thì tham số truyền vào không thể để dưới dạng hash).
 
@@ -109,7 +107,7 @@ Note:
 
 3. update_attribute dùng cho cập nhật 1 field còn update_attributes cần khi cập nhật nhiều field.
 
-# 3. Phương update_column và update_columns
+## 3. Phương update_column và update_columns
 
 Phương thức update_column có cú pháp giống như update_attribute, còn phương thức update_columns thì có cú pháp tương tự như update_attributes.
 
@@ -131,13 +129,9 @@ Note: Với phương thức update_column và update_columns
 
 2. Callback và validate đều **không** được chạy.
 
-# Kết luận
+## Kết luận
 
-Trên đây là một số nội dung cơ bản cần nắm bắt về cách cập nhật cơ sở dữ liệu với activerecord trong rails. Nhìn qua thì những phương thức này có vẻ khá giống nhau và đôi lúc bạn tự hỏi là lý do gì khiến phải sinh ra nhiều phương thức như vậy trong khi chỉ riêng phương thức `update` đã gần như làm được tất cả những gì mà chúng ta nghĩ là cần.
+Cách đây ít lâu tôi có làm 1 ứng dụng nhỏ, trong đó có một model chính gọi là X, trong model này tôi có viết một callback tên Y được thực hiện sau khi record được save (với method after_save). Trong callback Y tôi sử dụng method **update**.
 
-Cách đây ít lâu tôi có làm 1 ứng dụng nhỏ, trong đó có một model chính gọi là X, trong model này tôi có viết một callback tên Y được thực hiện sau khi record được save (với method after_save). Trong callback Y tôi sử dụng method `update`.
-
-Đáng buồn thay là đoạn code của tôi không hoạt động một cách bình thường, sau khi save record thì terminal bị crash với một vòng lặp bất tận, chợt nhận ra là khi sử dụng `update` thì callback được gọi lại, vậy là nó tạo ra một vòng lặp vĩnh viễn, save record(1) -> callback được gọi(2) -> trong callback có phương thức update(3) -> update được gọi(4) -> update lại gọi lại callback(2).
-Để khắc phục thì cần chuyển `update` thành `update_column` hoặc `update_columns`.
-
-Đây là một ví dụ nhỏ về việc cần thiết cuả những phương thức kể trên, mỗi phương thức sẽ là tốt hoặc là duy nhất có thể trong từng trường hợp. Hãy cân nhắc kỹ.
+Đáng buồn thay là đoạn code của tôi không hoạt động một cách bình thường, sau khi save record thì terminal bị crash với một vòng lặp bất tận, chợt nhận ra là khi sử dụng **update** thì callback được gọi lại, vậy là nó tạo ra một vòng lặp vĩnh viễn, save record(1) -> callback được gọi(2) -> trong callback có phương thức update(3) -> update được gọi(4) -> update lại gọi lại callback(2).
+Để khắc phục thì cần chuyển **update** thành **update_column** hoặc **update_columns**.

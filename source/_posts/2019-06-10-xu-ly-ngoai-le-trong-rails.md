@@ -6,19 +6,19 @@ tags: ["RAILS"]
 categories: ["RAILS"]
 ---
 
-# Đặt vấn đề
+## Đặt vấn đề
 
 Tôi có một số tình huống diễn ra hàng ngày về con mèo của tôi. Nếu nó đói tôi cho nó ăn, nếu nó đi vs lung tung tôi sẽ dọn dẹp chúng.
 
-Nhưng bỗng một ngày con mèo stupid của tôi bị "người ngoài hành tinh bắt cóc", wtf?. Đây là một tình huống không bình thường và tôi không có một `HÀNH ĐỘNG THỐNG NHẤT` nào để đối phó với 1 tình huống như vậy, tôi có thể khóc, có thể báo công an, nhưng chắc chắn không thể có một cách giải quyết triệt để. Trong lập trình ta gọi những tình huống mà logic luận lý sai lệch không còn đi theo logic bình thường như này là một exception.
+Nhưng bỗng một ngày con mèo stupid của tôi bị "người ngoài hành tinh bắt cóc", wtf?. Đây là một tình huống không bình thường và tôi không có một **HÀNH ĐỘNG THỐNG NHẤT** nào để đối phó với 1 tình huống như vậy, tôi có thể khóc, có thể báo công an, nhưng chắc chắn không thể có một cách giải quyết triệt để. Trong lập trình ta gọi những tình huống mà logic luận lý sai lệch không còn đi theo logic bình thường như này là một exception.
 
 Ví dụ như máy tính của bạn không được thiết kế để thực hiện phép chia cho số 0. Vậy khi bạn bắt nó thực hiện phép chia cho số 0, nó sẽ nghĩ "wtf is going on?" và đành quăng ra cho bạn một thông báo về việc bạn đã bắt nó làm một việc mà nó không được thiết kế để làm.
 
 Trong bài viết này chúng ta sẽ tìm hiểu về exception trong ruby.
 
-# Luận bàn
+## Luận bàn
 
-# 1. Tìm hiểu về Exception
+## 1. Tìm hiểu về Exception
 
 Đầu tiên chúng ta phải ghi nhớ rằng khi một exception được gọi, chương trình của bạn sẽ ngừng và đoạn code phía sau không thể chạy được nữa.
 
@@ -26,9 +26,9 @@ Trong bài viết này chúng ta sẽ tìm hiểu về exception trong ruby.
 
 2. Tôi đem con mèo đi bán vào quán tiểu hổ.
 
-Nếu ở `bước 1`, thay vì đón thành công con mèo, tôi lại dính một exception "MeoMissing" vì lý do nó bị người ngoài hành tinh bắt cóc.
+Nếu ở **bước 1**, thay vì đón thành công con mèo, tôi lại dính một exception "MeoMissing" vì lý do nó bị người ngoài hành tinh bắt cóc.
 
-Khi này dĩ nhiên chương trình sẽ dừng lại, vì tôi làm gì còn con mèo để mà đem nó đi bán ở  `bước 2`.
+Khi này dĩ nhiên chương trình sẽ dừng lại, vì tôi làm gì còn con mèo để mà đem nó đi bán ở  **bước 2**.
 
 Quay về với ví dụ đơn giản là chia cho số 0:
 
@@ -37,7 +37,7 @@ Quay về với ví dụ đơn giản là chia cho số 0:
 # => ZeroDivisionError (divided by 0)
 ```
 
-`ZeroDivisionError` là một exception được ruby tạo ra để trả về khi bạn cố chia một số cho số 0.
+**ZeroDivisionError** là một exception được ruby tạo ra để trả về khi bạn cố chia một số cho số 0.
 
 ```
   if (chia đàng hoàng)
@@ -51,7 +51,7 @@ Quay về với ví dụ đơn giản là chia cho số 0:
 
 Flow logic đơn giản về exception như trên.
 
-# 2. Làm sao để lấy về đối tượng Exception
+## 2. Làm sao để lấy về đối tượng Exception
 
 Như chúng ta đã biết, gần như mọi thứ trong ruby đều là object(Ngoại trừ method và block). Vậy nên Exception cũng là một đối tượng.
 
@@ -71,36 +71,36 @@ rescue ZeroDivisionError => e
 end
 ```
 
-`rescue` là từ khoá sẽ giúp bạn lấy được đối tượng exception trả về. Như ví dụ trên tôi lấy đối tượng exeption trả về (nếu exception đó là dạng ZeroDivisionError) và truyền nó vào biến `e`. Từ đây `e` chính là object exception nếu exception đó xảy ra.
+**rescue** là từ khoá sẽ giúp bạn lấy được đối tượng exception trả về. Như ví dụ trên tôi lấy đối tượng exeption trả về (nếu exception đó là dạng ZeroDivisionError) và truyền nó vào biến **e**. Từ đây **e** chính là object exception nếu exception đó xảy ra.
 
 Tôi có thể dùng e để xuất ra các thông tin mà tôi cần như class name hay message thông báo lỗi.
 
-# 3. Xây dựng một class Exception
+## 3. Xây dựng một class Exception
 
 Một sự thật hiển nhiên là những thiết kế có sẵn không bao giờ có thể cover cho tất cả các trường hợp có thể xảy ra trong thực tiễn. Đôi lúc bạn muốn thêm một exception để cover cho trường hợp của riêng dự án của bạn thì sao?
 
-Câu trả lời mà tôi mới tìm được khá thú vị và cũng rất quen thuộc. Đó là Exception cũng có thể được tạo ra như một class bình thường. Hãy để nó kế thừa lớp `StandardError` là được.
+Câu trả lời mà tôi mới tìm được khá thú vị và cũng rất quen thuộc. Đó là Exception cũng có thể được tạo ra như một class bình thường. Hãy để nó kế thừa lớp **StandardError** là được.
 
 ```ruby
 class MeoException < StandardError; end
 
 ```
 
-Vậy là ta đã có một class exception của riêng mình. Khi cần gọi đến exception này thì ta sẽ gọi sử dụng phương thức `raise` để gọi một đối tượng.
+Vậy là ta đã có một class exception của riêng mình. Khi cần gọi đến exception này thì ta sẽ gọi sử dụng phương thức **raise** để gọi một đối tượng.
 
 ```ruby
 raise MeoException.new(params_gi_do_ma_ban_muon)
 ```
 
-Vậy trong class class `MeoException` ta sẽ thiết kế những gì? :smile: Tôi cũng chưa tìm hiểu.
+Vậy trong class class **MeoException** ta sẽ thiết kế những gì? :smile: Tôi cũng chưa tìm hiểu.
 
-# 4. Các lớp Exception có sẵn trong Ruby
+## 4. Các lớp Exception có sẵn trong Ruby
 
 ![hoa](/images/ruby-exception.jpg)
 
 Đây là sơ đồ về các lớp exception trong ruby, nếu ta rescue một exception X, X lại có dăm 3 exception con, thì chỉ cần chương trình của bạn phát sinh vấn đề và trả ra một exception con nào đó thì X được gọi.
 
-# 5. Cách bắt Exception hợp lý
+## 5. Cách bắt Exception hợp lý
 
 **Cách 1:**
 
@@ -137,7 +137,3 @@ end
 ```
 
 Đây là cách tốt nhất, ta goi trực tiếp đến trường hợp ngoại lệ mà ta cần bắt lấy và xử lý.
-
-# Kết luận
-
-Nếu có phản hồi hãy để lại bình luận bên dưới bài viết.

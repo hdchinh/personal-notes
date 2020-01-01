@@ -5,15 +5,6 @@ draft: false
 tags: ["SOLID", "RUBY"]
 categories: ["RUBY", "PROGRAMMING"]
 ---
-## Đặt vấn đề
-
-Cách đây một thời gian, tôi có làm một ứng dụng nhỏ với vỏn vẹn tổng cộng tầm 500 dòng code. Khi bắt đầu tôi đã mường tượng rằng đây chỉ là một chương trình đơn giản nên không cần phân chia gì cho tốn công sức màu mè. Vì vậy tôi chỉ code trên vài file nhất định.
-
-Một thời gian sau, tôi cần mở rộng thêm 1 vài chức năng nữa, rất tệ là lúc này tôi đã gần như quên luôn các logic mình đã làm trong đống code cũ, cắn răng đọc lại từng dòng, từng dòng, và tốn thời gian gấp 3 gấp 4 lần để hệ thống lại cho dễ hiểu hơn. Một bài học không phải cay đắng lắm cho tôi, nó chỉ tôi hiểu rằng việc cấu trúc và cách tiếp cận khi lập trình quan trọng đến thế nào.
-
-Phần lớn thời gian một ứng dụng trên tay dev là để maintain, vậy nên việc ngày hôm nay bạn làm nó ra sao ảnh hưởng rất lớn đến sau này. Đó là một phần lý do mà tôi phải tìm đường cách mạng qua SOLID và những mẫu design pattern, những thứ văn vở mà ngày xưa tôi rất ghét và thấy thừa thãi, nhưng giờ đây nó như một bầu trời chân lý sáng chói loé qua tim.
-
-## Luận bàn
 
 ## 1. Định nghĩa và mục tiêu sử dụng
 
@@ -21,15 +12,15 @@ Phần lớn thời gian một ứng dụng trên tay dev là để maintain, v�
 
 Trước tiên, hãy xem SOLID là viết tắt của những cụm từ gì.
 
-:one: **S**ingle Responsibility Principle
+**1:** **S**ingle Responsibility Principle
 
-:two: **O**pen/Closed Principle
+**2:** **O**pen/Closed Principle
 
-:three: **L**iskov Substitution Principle
+**3:** **L**iskov Substitution Principle
 
-:four: **I**nterface Segregation Principle
+**4:** **I**nterface Segregation Principle
 
-:five: **D**ependency Inversion Principle
+**5:** **D**ependency Inversion Principle
 
 Hàn lâm là vậy nhưng để dễ nhớ thì tôi gọi chúng ngắn gọn là: **S**ingle, **O**pen, **L**iskov, **I**nterface và **D**ependency.
 
@@ -306,7 +297,7 @@ class YellowCat
 end
 ```
 
-Class này cần một phương thức support tên là `yellow_cat_helper`, tôi sẽ viết thêm method này vào module AnimalHelper và include module AnimalHelper vào class YellowCat vậy là đúng và đủ yêu cầu. Khi này module AnimalHelper và class YellowCat sẽ trở thành như sau:
+Class này cần một phương thức support tên là **yellow_cat_helper**, tôi sẽ viết thêm method này vào module AnimalHelper và include module AnimalHelper vào class YellowCat vậy là đúng và đủ yêu cầu. Khi này module AnimalHelper và class YellowCat sẽ trở thành như sau:
 
 Class YellowCat
 
@@ -344,7 +335,7 @@ Mọi chuyện giờ vẫn ổn chứ? Không, bây giờ thì không ổn nữa
 
 Vì sao?
 
-Vì class Animal đâu có cần method `yellow_cat_helper`, còn class YellowCat đâu có cần 3 method `animal_helper_a`, `animal_helper_b`, `animal_helper_c` này đâu?
+Vì class Animal đâu có cần method **yellow_cat_helper**, còn class YellowCat đâu có cần 3 method **animal_helper_a**, **animal_helper_b**, **animal_helper_c** này đâu?
 
 Vậy mà chúng vẫn có thể sử dụng những method mà chúng vốn không cần, vì lý do ta viết chung tất cả method vào một module và include module vào từng class.
 
@@ -470,10 +461,6 @@ end
 Checkout.new.get_bill(cart, PromotionTypeB)
 ```
 
-## Kết luận
-
-Trên đây là 1 cái nhìn tổng quan về hệ thống nguyên lý SOLID nổi tiếng, việc áp dụng nguyên lý này sẽ không chắc giúp mã nguồn bạn thành công, nhưng nó sẽ giảm thiểu rủi ro hơn là khi code bất chấp, lý thuyết chỉ là một phần nhỏ, nắm lý thuyết giúp chúng ta có cái nhìn tổng quát, trích rút lại thì thứ làm cho nguyên lý này có giá trị nằm ở kinh nghiệm sử dụng của nhà phát triển, không phải luôn luôn tuân thủ mọi quy tắc đã là tốt trong mọi trường hợp.
-
-Nguồn tham khảo:
+## Tham khảo
 
 [1] [https://en.wikipedia.org/wiki/SOLID](https://en.wikipedia.org/wiki/SOLID)

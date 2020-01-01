@@ -1,22 +1,13 @@
 ---
-title: "Immutable Vs Mutable"
+title: "Immutable Và Mutable Trong Ruby"
 date: 2019-04-08
 draft: false
-tags: ["ruby", "programming"]
-categories: ["ruby notes", "programming"]
-mytag: "Ruby"
-mytrend: "COOL"
+tags: ["RUBY"]
 ---
 
-# Đặt vấn đề
+## 1. Khái niệm mutable, immutable và ruby
 
-Vấn đề ở đây là tôi không có vấn đề gì để đặt cả, bài viết nằm trong mớ kiến thức rối bòng bong của tôi, và giờ tôi cần viết lại như một cách để ôn tập, hy vọng nó có thể giúp được ai đó.
-
-# Luận bàn
-
-# 1. Khái niệm mutable, immutable và ruby
-
-Đi thẳng vào vấn đề, chúng ta cần đề cập đến ba vấn đề: `mutable`, `immutable` và cách ruby xử lý hai khái niệm đó. Trước hết nếu bạn đã quên, thì tôi xin được nhắc lại định nghĩa của chúng.
+Đi thẳng vào vấn đề, chúng ta cần đề cập đến ba vấn đề: **mutable**, **immutable** và cách ruby xử lý hai khái niệm đó. Trước hết nếu bạn đã quên, thì tôi xin được nhắc lại định nghĩa của chúng.
 
 Xin trích dẫn [wiki](https://en.wikipedia.org/wiki/Immutable_object):
 
@@ -30,30 +21,30 @@ Dùng từ quá khó hiểu, what the hell is "trạng thái"? Theo một cách 
 
 Tương tự, các trạng thái của một đối tượng trong lập trình cũng được thiết lập bằng tất cả những gì tạo nên chúng. Ví dụ:
 
-Với 1 biến integer cơ bản `x = 10` thì trạng thái của nó được tạo ra bởi tên biến và giá trị, ở đây tên biến là `x` và giá trị là `10`, đâu đó trong vùng nhớ (Ram) của bạn sẽ lưu trữ cái chữ `x` kèm số `10` này.
+Với 1 biến integer cơ bản **x = 10** thì trạng thái của nó được tạo ra bởi tên biến và giá trị, ở đây tên biến là **x** và giá trị là **10**, đâu đó trong vùng nhớ (Ram) của bạn sẽ lưu trữ cái chữ **x** kèm số **10** này.
 
 Đồng nghĩa với đó nếu tôi thay đổi được giá trị 10 của biến x thì x là một đối tượng mutable và ngược lại nó là một đối tượng immutable.
 
-Tôi gán `x = 11` và thành công
+Tôi gán **x = 11** và thành công
 
 Từ đó có thể đưa ra kết luận x là một mutable?
 
 Câu trả lời là không, một số khái niệm rối rắm làm khó ta lúc đầu. Như đã biết, thứ mà CPU làm việc là địa chỉ vùng nhớ và chỉ địa chỉ vùng nhớ mà thôi. Những thứ khác nó không quan tâm.
 
-Với câu lệnh gán `x = 10`. Nó được hệ điều hành phiên dịch thành "có một biến tên `x` được gán giá trị bằng `10`, Ram, mày hãy bố trí thêm hai slot để lưu trữ `x` và `10`". Vậy lúc đó:
+Với câu lệnh gán **x = 10**. Nó được hệ điều hành phiên dịch thành "có một biến tên **x** được gán giá trị bằng **10**, Ram, mày hãy bố trí thêm hai slot để lưu trữ **x** và **10**". Vậy lúc đó:
 
-`x`(tên biến) được lưu ở vị trí AAA
-`10`(giá trị) được lưu ở vị trí BBB
+**x**(tên biến) được lưu ở vị trí AAA
+**10**(giá trị) được lưu ở vị trí BBB
 
-Với lệnh gán tiếp theo `x = 11`:
+Với lệnh gán tiếp theo **x = 11**:
 
-`x` vẫn yên vị nằm ở vị trí AAA
-`10` cũng vẫn yên trí nằm ở vị trí BBB
-`11` giá trị mới gán cho biến x thì lúc này nằm ở vị trí CCC
+**x** vẫn yên vị nằm ở vị trí AAA
+**10** cũng vẫn yên trí nằm ở vị trí BBB
+**11** giá trị mới gán cho biến x thì lúc này nằm ở vị trí CCC
 
 Vậy khi chạy một lệnh gán mới thì biến x đã được gán bằng giá trị trên một vùng nhớ khác, còn vùng nhớ ban đầu **không thay đổi giá trị** nên ta có thể kết luận x là một immutable.
 
-Chứng minh bằng ví dụ sau trong ruby, chú ý là ruby là một ngôn ngữ script, với trình thông dịch VM bên dưới để xử lý của nó được viết bằng C, nên ở lớp cơ sở của ruby ta không thể truy xuất vị trí vùng nhớ đến từng thanh ghi như trong C được (việc đó được làm ở lớp core YARV). Tuy nhiên, ta có thể kiếm tra được vị trí tượng trưng trên bộ nhớ của nó thông qua `object_id`.
+Chứng minh bằng ví dụ sau trong ruby, chú ý là ruby là một ngôn ngữ script, với trình thông dịch VM bên dưới để xử lý của nó được viết bằng C, nên ở lớp cơ sở của ruby ta không thể truy xuất vị trí vùng nhớ đến từng thanh ghi như trong C được (việc đó được làm ở lớp core YARV). Tuy nhiên, ta có thể kiếm tra được vị trí tượng trưng trên bộ nhớ của nó thông qua **object_id**.
 
 ```ruby
 x = 10
@@ -74,7 +65,7 @@ Tất cả các loại dữ liệu nguyên thuỷ trong ruby đều là immutabl
 
 Integer, float, string, boolean chúng đều là immutable.
 
-# 2. Liệu đây có phải là một kiến thức cần thiết?
+## 2. Liệu đây có phải là một kiến thức cần thiết?
 
 Chắc chắn là có.
 
@@ -99,8 +90,8 @@ Có điều gì bất thường trong đoạn mã này không nhỉ? Câu trả 
 Từ hai điều trên ta rút ra được kết luận:
 
 1. Trong lần gán đầu tiên str có giá trị là chuỗi rỗng và được khởi tạo tại ví trí A1
-2. Trong lần lặp `each` đầu tiên, str có giá trị là "Hoang" và nó lưu ở vị trí A2
-3. Trong lần lặp `each` thứ hai, str có giá trị mới là "HoangDuy" và nó lưu ở vị trí mới là A3
+2. Trong lần lặp **each** đầu tiên, str có giá trị là "Hoang" và nó lưu ở vị trí A2
+3. Trong lần lặp **each** thứ hai, str có giá trị mới là "HoangDuy" và nó lưu ở vị trí mới là A3
 4. Trong lần lặp cuối cùng thì str có giá trị chúng ta mong đợi là "HoangDuyChinh" và nó lưu ở vị trí A4
 
 Chứng minh:
@@ -129,7 +120,7 @@ Và thứ chúng ta quan tâm từ đó về sau là vị trí A4 này. Vậy c�
 
 Ví dụ trên mảng ta có ba phần tử và ta có 3 giá trị rác trên bộ nhớ, hãy tưởng tượng bạn có một mảng một triệu phần tử :worried:
 
-Giải pháp trong trường hợp này là gì? Đó là duyệt mảng như một `object reference` chứ không phải một biến giá trị
+Giải pháp trong trường hợp này là gì? Đó là duyệt mảng như một **object reference** chứ không phải một biến giá trị:
 
 ```ruby
 str = ""
@@ -154,6 +145,7 @@ puts "Final value: #{str} | location: #{str.object_id}"
 ```
 
 Kết quả:
+
 ```
 First location: 47196120971580
 value: Hoang | location: 47196120971580
@@ -161,6 +153,7 @@ value: HoangDuy | location: 47196120971580
 value: HoangDuyChinh | location: 47196120971580
 Final value: HoangDuyChinh | location: 47196120971580
 ```
-# Kết luận
 
-Trong bài viết có đề cập đến `object_id` và `GC`, đây là hai vấn đề nền tảng trong ruby, hy vọng sẽ có khả năng viết các bài khác về hai chủ đề này, nếu có thắc mắc hay đóng góp cho thiếu xót của tác giả, hãy để lại bình luận bên dưới :smile:.
+## 3. Tham khảo
+
+[1] [https://en.wikipedia.org/wiki/Immutable_object](https://en.wikipedia.org/wiki/Immutable_object)
