@@ -3,7 +3,7 @@ title: "Lệnh Open Trên macOS"
 date: 2018-01-23
 draft: false
 tags: ["UNIX"]
-label: "[@til]"
+label: "[#til]"
 categories: ["OS"]
 
 ---

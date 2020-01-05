@@ -3,7 +3,7 @@ title: "Vài Trình Thông Dịch Cho Ruby"
 date: 2019-02-20
 draft: false
 tags: ["RUBY"]
-label: "[@til]"
+label: "[#til]"
 ---
 
 ## 1. Ruby chạy code của bạn như nào?

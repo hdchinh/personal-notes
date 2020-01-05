@@ -1,10 +1,9 @@
 ---
-title: "Book Notes: Mateprograming Ruby 2"
+title: "Mateprograming Ruby 2"
 date: 2019-09-21
 draft: false
-tags: ["ruby"]
-categories: ["til"]
-mytag: "#TIL"
+tags: ["NOTES"]
+label: "[#book]"
 ---
 
 ## IMAGES

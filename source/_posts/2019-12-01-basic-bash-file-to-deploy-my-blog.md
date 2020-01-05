@@ -2,7 +2,7 @@
 title: Deploy My Blog Use Script
 date: 2019-12-01
 tags: ["TIL"]
-label: "[@til]"
+label: "[#til]"
 ---
 
 ## 1. Example
