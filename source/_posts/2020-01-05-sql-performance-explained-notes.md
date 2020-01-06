@@ -5,7 +5,7 @@ tags: ["NOTES"]
 label: "[#book]"
 ---
 
-> The notes of mine after read SQL Performance Explained Ebook.
+> The notes of mine after read SQL Performance Explained Ebook (boring, but helpful).
 
 ## Anatomy of an Index
 
@@ -13,7 +13,7 @@ Cơ sở dữ liệu sử dụng 2 loại cấu trúc để lưu trữ index. **
 
 ### Doubly Linked List
 
-1. Mỗi một node (node chứa index) sẽ là một node trong 1 node trong 1 **Doubly Linked List**, vì vậy nó sẽ có liên kết tới đến 2 node lân cận (một trước và một sau). Khi ta muốn chèn thêm 1 node mới vào dslk đôi này. Ta sẽ tìm vị trí 2 node cần chèn node mới vào giữa chúng, đơn giản chỉ thay đổi con trỏ của 2 node đó. Vì thế vị trí vật lý của node mới không quan trọng. Lợi ích của việc này là giúp việc chèn thêm dữ liệu không tốn quá nhiều công sức, chỉ thay đổi vài con trỏ.
+1. Mỗi một node (node chứa index) sẽ là một node trong 1 **Doubly Linked List**, vì vậy nó sẽ có liên kết tới đến 2 node lân cận (một trước và một sau). Khi ta muốn chèn thêm 1 node mới vào dslk đôi này. Ta sẽ tìm vị trí 2 node cần chèn node mới vào giữa chúng, đơn giản chỉ thay đổi con trỏ của 2 node đó. Vì thế vị trí vật lý của node mới không quan trọng. Lợi ích của việc này là giúp việc chèn thêm dữ liệu không tốn quá nhiều công sức, chỉ thay đổi vài con trỏ.
 
 2. Mỗi **leaf node** được lưu chữ trong 1 block/page. Mỗi block sẽ thườn là 1 vài KB, csdl sẽ cố gắng lưu nhiều node (node chưa index) nhất có thể trong mỗi block/page. Vậy csdl sẽ dùng dsdl đôi để quản lý trong 2 cấp (Dùng trong các node thuộc 1 block/page và dùng giữa các blog với nhau). Hiểu đơn giản như ta chia Việt Nam thành 63 block ứng với 63 tỉnh thành. Mỗi khi ta muốn tìm 1 tỉnh nào đó thì tìm trong sdl đôi của 63 tỉnh. Khi đã tìm thấy tỉnh cần tìm ta muốn tìm đến huyện (các huyện trong tỉnh đó cũng dùng dslk đôi để kết nối). Nhìn hình dưới đây.
 
@@ -29,5 +29,41 @@ Cơ sở dữ liệu sử dụng 2 loại cấu trúc để lưu trữ index. **
 
 3. Lý do B-Tree được lựa chọn và sử dụng rộng rãi là vì đặc tính cân bằng của cây. Độ cao của cây là không đổi từ root đến bất kể node lá nào. Tính tăng trưởng chiều cao của cây theo Logarit khi tăng node lá dẫn đến 1 cây bậc 4, 5 có thể chứa hàng triệu node và trong thực tế gần như không có trường hợp nào có độ sâu lên đến 6.
 
-
 ## The Where Clause
+
+### Concatenated Indexes
+
+1. Các hệ quản trị cơ sở dữ liệu hiện nay sẽ đánh index cho khoá chính một cách tự động.
+
+2. **Concatenated Indexes**: Index được tạo bằng nhiều cột.
+
+3. Một index được tạo từ 2 cột ví dụ **col-1** và **col-2** thì trong 1 câu truy vấn where dùng với 2 cột trên, index sẽ hoạt động không khác gì so với index một cột cả. Tuy nhiên thứ tự 2 cột trong câu lệnh tạo index sẽ rất quan trọng.
+
+e.g:
+
+```sql
+CREATE UNIQUE INDEX employee_pk
+  ON employees (employee_id, subsidiary_id);
+```
+
+Khi này nếu chúng ta dùng truy vấn sau:
+
+```sql
+SELECT first_name, last_name
+  FROM employees
+  WHERE subsidiary_id = 20;
+```
+
+Index sẽ tạo bên trên vô dụng và csdl sẽ full scan toàn bộ bảng employees.
+
+> Cột đầu tiên sẽ là tiêu chí chính để xác định record cần tìm, chỉ sử dụng cột thứ 2 khi mà có nhiều hơn 1 record đáp ứng được tiêu chí về cột đầu tiên. Vì vậy 1 truy vấn với cột thứ 2 sẽ là vô nghĩa.
+
+![2-col](/../images/2-col.png)
+
+Trong hình trên ta có thể thấy, B-Tree được sắp xếp theo cột đầu tiên, và ta chỉ sử dụng cột thứ 2 khi có nhiều hơn 1 record đáp ứng được điều kiện với cột đầu tiên. Ví dụ như record có id = 123, B-Tree sẽ dẫn chúng ta tới block chứa id này, ở đây vì có nhiều hơn 1 record có id = 123. Nó mới dựa vào cột thứ 2 để lấy record cần tìm. Vậy nếu ta query với điều kiện where chỉ có cột thứ 2 thì rõ ràng là hoàn toàn vô nghĩa.
+
+4. Bản thân B-Tree trong trường hớp này cũng chỉ lưu cột thứ 2 ở node lá mà thôi, những node trung gian không có thông tin của cột 2.
+
+> Điều quan trọng nhất khi tạo một index gồm nhiều cột là xác định xem nên chọn cột nào làm cột đầu tiên trong index.
+
+### Functions
