@@ -66,4 +66,63 @@ Trong hình trên ta có thể thấy, B-Tree được sắp xếp theo cột đ
 
 > Điều quan trọng nhất khi tạo một index gồm nhiều cột là xác định xem nên chọn cột nào làm cột đầu tiên trong index.
 
-### Functions
+### Function-base index
+
+Trong trường hợp đã đánh index cho cột **last_name**, vì không kiểm soát được dữ liệu của người dùng nhập và dữ liệu trong csdl, chữ hoa và chữ thường trong trường hợp này không phân biệt. Vậy ta nên làm gì?
+
+```sql
+SELECT first_name, last_name, phone_number
+  FROM employees
+  WHERE UPPER(last_name) = UPPER('winand');
+```
+
+Tìm các record có last_name = 'winand', trước khi tìm kiếm thì sẽ dùng hàm UPPER để covert dữ liệu sang chữ hoa khi so khớp. Nhớ điều kiện bên trên, chúng ta đã đánh index cho field **last_name** tuy nhiên trong trường hợp này index sẽ không còn hoạt động, thay vào đó là 1 full scan toàn bộ bảng.
+
+Mô tuýt:
+
+```sql
+SELECT first_name, last_name, phone_number
+  FROM employees
+  WHERE BLACKBOX(...) = 'WINAND';
+```
+
+Trong đó thay **BLACKBOX** bằng một function bất kỳ, ứng với việc index không còn hoạt động.
+
+Giải pháp: Đánh index luôn giá trị thực sự sẽ dùng khi tìm kiếm, ở đây là last_name dưới dạng viết hoa.
+
+```sql
+CREATE INDEX emp_up_name
+  ON employees (UPPER(last_name));
+```
+
+> Ta gọi chỉ mục được tạo trên là function-based index (FBI), chỉ mục dựa trên function.
+
+Thay vì copy luôn dữ liệu cột được đánh vào cây index. Một function-based index sẽ apply function vào dữ liệu trước khi ghi vào cây index. Vậy trong ví dụ trên, cây index sẽ chứa toàn bộ last_name dưới dạng chữ hoa.
+
+> Một số ORM dùng upper/lower 1 cách ngầm và mặc định, chớ không cần dev phải trực tiếp thực hiện, ví dụ như Hibernate sẽ tự động thực hiện function-based index với lower của cột cần đánh.
+
+Trên là kiến thức SQL, với các hệ quản trị cơ sở dữ liệu trong thực tế, cách thực hiện không phải lúc nào cũng như vậy.
+
+### User-Defined Functions
+
+Không phải function nào cũng có thể dùng cho function-based index.
+
+Chỉ những function là **deterministic** mới có thể dùng trong function-based index.
+
+> deterministic: những function trả về cùng một kết quả khi nhận tham số giống nhau.
+
+```sql
+CREATE FUNCTION get_age(date_of_birth DATE)
+RETURN NUMBER
+AS
+BEGIN
+ RETURN
+ TRUNC(MONTHS_BETWEEN(SYSDATE, date_of_birth)/12);
+END;
+```
+
+Không thể dùng **get_age** cho function-based index. Vì ví dụ tôi sinh ngày 30/08/1995. Ứng với mỗi thời điểm khác nhau output của hàm này sẽ khác nhau với cùng một đối số truyền vào là ngày sinh của tôi. Vậy nên nó không dùng để function-based index được.
+
+> Các function khác không thể dụng cho index là function random hoặc function dựa trên biến môi trường.
+
+Notes: Giả sử chúng ta đánh index cho cột **last_name** rồi đánh tiếp cho **UPPER(last_name)**, với mỗi lần update đối tượng có trường last_name, đồng nghĩa chúng ta phải update cho 2 index. Ứng với 2 index đã đánh, vì vậy không nên đánh index quá nhiều, nhất là với function-based index.
