@@ -126,3 +126,47 @@ Không thể dùng **get_age** cho function-based index. Vì ví dụ tôi sinh 
 > Các function khác không thể dụng cho index là function random hoặc function dựa trên biến môi trường.
 
 Notes: Giả sử chúng ta đánh index cho cột **last_name** rồi đánh tiếp cho **UPPER(last_name)**, với mỗi lần update đối tượng có trường last_name, đồng nghĩa chúng ta phải update cho 2 index. Ứng với 2 index đã đánh, vì vậy không nên đánh index quá nhiều, nhất là với function-based index.
+
+### Parameterized Queries
+
+> Bind parameters/dynamic parameters/ bind variables là một cách truyền tham số vào câu query gián tiếp bằng các ký hiệu như **?**, **:name**, **@name**.
+
+> Bind variables are the best way to prevent SQL injection.
+
+> Các hệ quản trị csdl sẽ cache lại các dữ liệu đường truy cập y hệt nhau. Khi ta thay đổi tham số truyền vào hệ cơ sở dữ liệu sẽ query mới và không còn dùng cache.
+
+> Not using bind parameters is like recompiling a program every time.
+
+### Searching for Ranges
+
+> Rủi do hiệu suất lớn nhất với INDEX RANGE SCAN là quá trình duyệt qua nút lá.
+
+```sql
+SELECT first_name, last_name, date_of_birth
+  FROM employees
+  WHERE date_of_birth >= TO_DATE(?, 'YYYY-MM-DD')
+  AND date_of_birth <= TO_DATE(?, 'YYYY-MM-DD')
+  AND subsidiary_id = ?
+```
+
+Ok, giờ chúng ta có một câu truy vấn như trên, tìm tất cả nhân viên có subsidiary_id = 27 và ngày sinh nằm trong khoảng 1/1/1971 và 9/1/1971.
+
+Chúng ta sẽ đánh index cho 2 cột trên, đánh như bên trên đã ghi. Tuy nhiên **thứ tự đánh index** như nào?
+
+**Trường hợp xếp date_or_birth trước**:
+
+![date- first](/../images/date-first.png)
+
+**Trường hợp xếp subsidiary_id trước**:
+
+![sub- first](/../images/sub-first.png)
+
+**Tại sao trường hợp cho subsidiary_id đầu tiên trong index lại đem lại performance tốt hơn?**
+
+Lý giải: khi dùng range first, kiểu gì cũng phải duyệt hết range đó thôi, record nào trong range đó là sẽ được duyệt qua rồi so khớp với điều kiện so bằng thứ hai.
+
+Khi dùng trường so bằng đầu tiên, ta làm giảm phạm vì số record cần quét qua (theo quy tắc của B-Tree).
+
+> Rule of thumb: index for equality first—then for ranges.
+
+### Indexing LIKE Filters
