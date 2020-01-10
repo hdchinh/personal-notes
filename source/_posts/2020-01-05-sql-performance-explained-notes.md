@@ -170,3 +170,80 @@ Khi dùng trường so bằng đầu tiên, ta làm giảm phạm vì số recor
 > Rule of thumb: index for equality first—then for ranges.
 
 ### Indexing LIKE Filters
+
+Với các query với **LIKE**, chúng ta vẫn có thể đánh index bình thường lên trường được truy vấn. Tuy nhiên trong một số trường hợp chúng ta sẽ gặp vấn đề ví dụ như:
+
+Dùng ký tự **%** trong từ cần tìm.
+
+```sql
+SELECT first_name, last_name, date_of_birth
+  FROM employees
+  WHERE UPPER(last_name) LIKE 'WINND'
+```
+
+Đánh index trên last_name và ngon.
+
+```sql
+SELECT first_name, last_name, date_of_birth
+  FROM employees
+  WHERE UPPER(last_name) LIKE 'WIN%D'
+```
+
+Ký tự **%** xuất hiện và không ngon nữa rồi. Vì lúc này, **index** chỉ sử dụng phần trước **%** để tính khoảng range cần quét, còn phần đằng sau **%** chỉ dùng nhiệm vụ so khớp.
+
+Tức là phải quét qua bao nhiêu phần tử sẽ hoàn toàn do phần đầu tiên quyết định. Từ có ta có 2 định nghĩa tác giả nêu ra:
+
+1. **access predicate**: phần đầu
+2. **filter predicate**: phần còn lại
+
+Ví dụ hình dưới đây:
+
+![like-query](/../images/like-query.png)
+
+Khi thay cụm từ đứng trước **%** từ WI -> WIN -> WINA thì scan range đã thay đổi từ:
+
+18 -> 2 -> 1 (trong cơ sở dữ liệu mẫu).
+
+### Index Merge
+
+> One index scan is faster than two.
+
+Liệu nên tạo mỗi index cho một column, hay tạo một index cho tất cả column, trường hợp nào hiệu quả hơn? Câu trả lời của tác giả là nhiều cột cho một index sẽ hiệu quả hơn trong truy vấn where.
+
+Tại sao lại như vậy?
+
+Quay trở lại định nghĩa, chúng ta đã được đọc rằng index dùng B-Tree kết hợp với dslk đôi để cover các trường hợp.
+
+Vậy giả sử, ta đánh index lên 2 column (last_name và date_of_bird) theo đúng thứ tự sắp xếp. Khi này hệ quản trị csdl sẽ đánh sắp khoảng theo last_name, tức là node lá sẽ bắt đầu tới last_name có ký tự nhỏ nhất (ví dụ là A) và node lá cuối cùng sẽ là ký tự lớn nhất (ví dụ là Z). Khi này, trường thứ 2 trong index chỉ dùng để so khớp khi ta có 2 last_name bằng nhau mà thôi.
+
+
+Vậy nếu ta đánh 2 index riêng biệt cho last_name và date_of_bird thì sao? Lúc này với một câu truy vấn dưới đây:
+
+```sql
+SELECT first_name, last_name, date_of_birth
+  FROM employees
+  WHERE UPPER(last_name) < ?
+  AND date_of_birth < ?
+```
+
+hệ quản trị csdl sẽ phải duyệt qua 2 cây index (1 cây ứng với index cho last_name và cây còn lại ứng với index cho date_of_birth). Sau đó combine kết quả của 2 lần duyệt ở trên lại.
+
+Sẽ tốn resource hơn rất nhiều so với đánh 1 index cho last_name + date_of_birth.
+
+> Có một loại index giúp giải quyết bài toán trên gọi là bitmap index, tuy nhiên bitmap index gặp vấn đề lớn trong việc ghi đồng thời, vì thế nó không thể sử dụng trong các csdl thanh toán online.
+
+### Partial Indexes
+
+Đánh chỉ mục cho 1 nhóm phần tử thuộc 1 bảng.
+
+```sql
+CREATE INDEX messages_todo
+  ON messages (receiver)
+  WHERE processed = 'N'
+```
+
+Đánh index cho các row thuộc bảng messages mà có column processed có giá trị bằng N.
+
+Vậy ta dùng được index này khi nào. Câu trả lời là chúng ta có thể dùng mọi lúc khi query với mệnh đề where.
+
+## Performance and Scalability
