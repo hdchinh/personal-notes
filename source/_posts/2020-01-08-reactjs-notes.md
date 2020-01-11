@@ -133,8 +133,37 @@ Trong ví dụ trên, object duy nhất là: **props = {name: "Sara"}**
 
 ### 4.State và vòng đời
 
+Nơi duy nhất ta có thể set state là trong constructor. Ở các khu vực khác, phải call hàm setState để thay đổi giá trị state.
 
+Cập nhật state là bất đồng bộ. Để khắc phục, setState nhận tham số đầu tiên là state cũ.
 
+```jsx
+// Correct
+this.setState((state, props) => ({
+  counter: state.counter + props.increment
+}));
+```
+
+```jsx
+constructor(props) {
+  super(props);
+
+  this.state = {
+    name: 'Chinh',
+    age: 25
+  }
+}
+```
+
+Khi gọi:
+
+```jsx
+this.setState({
+  name: 'Duy'
+})
+```
+
+name trong state sẽ được replace và thay mới, còn age thì giữ nguyên => gọi là merge vậy thôi
 
 ## Advandced Guide
 
