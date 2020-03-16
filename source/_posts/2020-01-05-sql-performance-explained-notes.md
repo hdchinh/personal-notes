@@ -247,3 +247,7 @@ CREATE INDEX messages_todo
 Vậy ta dùng được index này khi nào. Câu trả lời là chúng ta có thể dùng mọi lúc khi query với mệnh đề where.
 
 ## Performance and Scalability
+
+## The Join Operation
+
+## Clustering Data

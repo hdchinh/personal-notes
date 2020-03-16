@@ -16,21 +16,38 @@ ssh-keygen -t rsa -C "hduychinh@gmail.com" -f "primary_github"
 ```
 
 
-## 2. Add key
+## 2. Add key to ssh-agent
 
 eg.
 ```bash
-ssh-add ~/.ssh/primary_github
+ssh-add ~/.ssh/your_file_ssh
 ```
 
-## 3. Cache
+what is ssh-agent?
 
-Remove cache:
+eazy way, we can think it like a stack. When you access to server with ssh connection type.
+So your device will send this stack to server. And if the valid key (private key) stored in this stack, you can access to server.
+
+If you use ssh-agent. You can access like this:
+
+```bash
+ssh ubuntu@123.456.789
+```
+
+instead of:
+
+```bash
+ssh -i ~/.ssh/your_valid_private_key ubuntu@123.456.789
+```
+
+## 3. ssh-agent
+
+Remove all entries in ssh-agent:
 ```bash
 ssh-add -D
 ```
 
-Show cache:
+Show all entries in ssh-agent:
 ```bash
 ssh-add -l
 ```
