@@ -2,7 +2,7 @@
 title: "The THIS Keyword In Javascript"
 date: 2020-01-10
 tags: ["JS"]
-# label: "[#notes]"
+# label: "note"
 ---
 
 I don't remember I write the first line of JS code how long before from now. It seems like happen every a long time ago, Until now, I still do not know what exactly is **this** in JS. Too bad, but today I will try to understand it again.

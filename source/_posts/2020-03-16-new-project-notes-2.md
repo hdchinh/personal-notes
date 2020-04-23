@@ -2,7 +2,7 @@
 title: "New Project Notes [Part 2]"
 date: 2020-03-16
 tags: ["NOTES"]
-label: "[#notes]"
+label: "[#note]"
 ---
 
 ## 1. Install homebrew formula

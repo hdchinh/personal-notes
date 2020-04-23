@@ -2,7 +2,7 @@
 title: "Method And Function"
 date: 2020-01-11
 tags: ["NOTES"]
-label: "[#notes]"
+label: "[#note]"
 ---
 
 ### 1.What is the different between method and function?
