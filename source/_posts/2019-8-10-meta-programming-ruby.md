@@ -1,5 +1,5 @@
 ---
-title: "Mateprograming Ruby 2"
+title: "Metaprograming Ruby 2"
 date: 2019-09-21
 draft: false
 tags: ["NOTES"]
