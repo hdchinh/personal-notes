@@ -2,7 +2,7 @@
 title: "Save Navigation Operator"
 date: 2020-05-12
 tags: ["NOTES"]
-label: "[#til]"
+label: "#til"
 ---
 
 > Just take a note from resources on internet!

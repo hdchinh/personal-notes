@@ -2,7 +2,7 @@
 title: "ReactJS Short Note"
 date: 2020-01-08
 tags: ["NOTES"]
-label: "[#note]"
+label: "#note"
 ---
 
 > This is a short note from ReactJS docs.

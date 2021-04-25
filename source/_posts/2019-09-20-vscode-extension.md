@@ -4,7 +4,7 @@ date: 2019-09-20
 draft: false
 tags: ["TIl"]
 categories: ["TIL"]
-label: "[#til]"
+label: "#til"
 ---
 
 1. Leetcode (https://marketplace.visualstudio.com/items?itemName=shengchen.vscode-leetcode)

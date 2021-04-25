@@ -1,5 +1,5 @@
 ---
-title: "Tổng Quan Về Permission Trong UNIX"
+title: "Permission Trong UNIX"
 date: 2018-01-01
 draft: false
 tags: ["UNIX"]

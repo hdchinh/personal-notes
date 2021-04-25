@@ -3,7 +3,7 @@ title: "Cập Nhật Dữ Liệu Với ActiveRecord"
 date: 2019-05-08
 draft: false
 tags: ["RAILS"]
-label: "[#til]"
+label: "#til"
 ---
 
 ## Đặt vấn đề

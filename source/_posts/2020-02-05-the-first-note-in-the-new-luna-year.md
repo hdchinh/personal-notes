@@ -2,7 +2,7 @@
 title: "New Project Notes [Part 1]"
 date: 2020-02-05
 tags: ["NOTES"]
-label: "[#note]"
+label: "#note"
 ---
 
 ## 1. Rbenv does not show all version ruby.

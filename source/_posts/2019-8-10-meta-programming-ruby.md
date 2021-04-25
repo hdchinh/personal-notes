@@ -3,7 +3,7 @@ title: "Metaprograming Ruby 2"
 date: 2019-09-21
 draft: false
 tags: ["NOTES"]
-label: "[#book]"
+label: "#book"
 ---
 
 ## IMAGES

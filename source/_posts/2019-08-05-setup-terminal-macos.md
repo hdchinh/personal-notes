@@ -5,7 +5,7 @@ draft: false
 tags: ["TIl"]
 categories: ["TIL"]
 mytag: "#TIL"
-label: "[#til]"
+label: "#til"
 ---
 
 ## 1. Config to show branch in Terminal

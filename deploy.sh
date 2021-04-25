@@ -5,8 +5,9 @@ NC='\033[0m'
 hexo_clean="hexo clean"
 hexo_generate="hexo generate"
 cd_public="cd public"
-create_file="touch CNAME"
-add_content="echo "hdchinh.com" >> CNAME"
+# Don't use domain for now
+# create_file="touch CNAME"
+# add_content="echo "hdchinh.com" >> CNAME"
 deploy="hexo deploy"
 
 echo "${GREEN}============ Starting Gengerate ===============${NC}"

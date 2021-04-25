@@ -2,7 +2,7 @@
 title: "SQL Performance Explained"
 date: 2020-01-05
 tags: ["NOTES"]
-label: "[#book]"
+label: "#book"
 ---
 
 > The notes of mine after read SQL Performance Explained Ebook (boring, but helpful).
