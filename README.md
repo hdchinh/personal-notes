@@ -20,3 +20,5 @@ deploy:
   repo: git@hdchinh.github.com:hdchinh/hdchinh.github.io.git
   branch: master
 ```
+
+### 6. Clone themes to themes folder

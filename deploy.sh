@@ -5,6 +5,7 @@ NC='\033[0m'
 hexo_clean="hexo clean"
 hexo_generate="hexo generate"
 cd_public="cd public"
+push_to_github="git add & git commit -m 'Update' && git push origin master"
 # Don't use domain for now
 # create_file="touch CNAME"
 # add_content="echo "hdchinh.com" >> CNAME"
@@ -21,4 +22,8 @@ eval $add_content
 
 echo "${GREEN}============ Starting Deploy ==================${NC}"
 eval $deploy
-echo "${GREEN}============ Done =============================${NC}"
+echo "${GREEN}============ Finished Deployment ==============${NC}"
+
+echo "${GREEN}============ Pushing to Github ================${NC}"
+eval $push_to_github
+echo "${GREEN}============ Finished Pushing =================${NC}"

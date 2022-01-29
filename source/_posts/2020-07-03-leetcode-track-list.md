@@ -1,5 +1,5 @@
 ---
-title: "Leetcode Track List"
+title: "Leetcode Tracking List"
 date: 2020-07-03
 label: "#note"
 ---
