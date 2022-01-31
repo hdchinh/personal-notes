@@ -14,7 +14,7 @@ Fetch là một module được tích hợp sẵn trong các trình duyệt, đi
 
 ### 1.1 Fetch với async await
 
-```javascript
+```
 async function getCats() {
   try {
     const url = "http://localhost:4000/api/v1/cats";
