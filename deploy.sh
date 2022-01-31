@@ -5,7 +5,7 @@ NC='\033[0m'
 hexo_clean="hexo clean"
 hexo_generate="hexo generate"
 cd_public="cd public"
-push_to_github="git add & git commit -m 'Update' && git push origin master"
+push_to_github="git add . & git commit -m 'Update' && git push origin master"
 # Don't use domain for now
 # create_file="touch CNAME"
 # add_content="echo "hdchinh.com" >> CNAME"

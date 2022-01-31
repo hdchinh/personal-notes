@@ -21,8 +21,3 @@ date: 2019-11-11 10:38:10
 ![the con thien than](/../images/thecon-thienthan.jpg)
 
 ![the con tuyet lo](/../images/thecon-tuyetlo.gif)
-
-![sshhhh icon test](/../images/sshhhh.png)
-
-
-![sshhhh icon test 2](/../images/sshhhh_2.png)
