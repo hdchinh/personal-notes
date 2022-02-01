@@ -1,5 +1,5 @@
 ---
-title: Put images in the header
+title: Put Images In The Header
 date: 2022-01-31
 photos:
 - /images/test/test1.jpg
