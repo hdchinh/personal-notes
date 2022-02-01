@@ -22,3 +22,8 @@ deploy:
 ```
 
 ### 6. Clone themes to themes folder
+
+
+```
+git add source && git add themes & git commit -m 'Update' && git push origin master
+```
