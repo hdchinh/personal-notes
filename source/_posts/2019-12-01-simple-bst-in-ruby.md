@@ -211,5 +211,3 @@ b = a.right
 puts "#{b.value} | #{b.left ? b.left.value : nil} | #{b.right ? b.right.value : nil}"
 
 ```
-
------

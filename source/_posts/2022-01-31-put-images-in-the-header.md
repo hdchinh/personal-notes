@@ -11,4 +11,5 @@ photos:
 - /images/test/test7.jpg
 - /images/test/test8.jpg
 - /images/test/test9.jpg
+- /images/test/test10.jpg
 ---
