@@ -1,5 +1,5 @@
 ---
-title: Moving from Heroku to Render
+title: Custom Heroku domain
 date: 2022-09-12
 ---
 
@@ -13,7 +13,9 @@ heroku domains:add coolname.com --app <HEROKU APP NAME>
 
 Add DNS records: ALIAS - @ - DNS endpoint
 
-3. Wait a few minutes
+3. Make sure you go through Heroku app settings to enable SSL, by default it will be disable by Heroku
+
+4. Wait a few minutes
 
 [https://devcenter.heroku.com/articles/custom-domains](https://devcenter.heroku.com/articles/custom-domains)
 [https://www.youtube.com/watch?v=UBpJV156jzk](https://www.youtube.com/watch?v=UBpJV156jzk)
