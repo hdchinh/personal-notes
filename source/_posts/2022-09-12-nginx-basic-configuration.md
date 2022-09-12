@@ -3,6 +3,18 @@ title: Nginx basic configuration
 date: 2022-09-12
 ---
 
+Install
+
+```bash
+sudo apt update
+sudo apt install nginx -y
+
+nginx -t # check syntax
+
+# Default: /etc/nginx/sites-enabled/default
+sudo service nginx restart
+```
+
 1. Point to a port
 
 ```bash
